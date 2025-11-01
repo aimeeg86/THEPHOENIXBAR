@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Phoenix Bar</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="theme-color" content="#0e563d">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="brand">The Phoenix Bar</header>
+
+<main class="container">
+  <div class="hero" id="heroImg" aria-hidden="true"></div>
+
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="hd">About Us</div>
+    <div class="panel"><p id="aboutText">
+      Welcome to The Phoenix Bar, your friendly local on Royal Wootton Bassett High Street. Dog friendly, locally run, and always lively — there’s always something going on! Come enjoy live music, sports, cocktails, and great company.
+    </p></div>
+  </section>
+
+  <!-- Drink Offers -->
+  <section id="offers" class="section offers">
+    <div class="hd">Drink Offers</div>
+    <div class="grid2" id="offersGrid">
+      <!-- 4 offer boxes rendered by app.js -->
+    </div>
+  </section>
+
+  <!-- What's On -->
+  <section id="whats" class="section">
+    <div class="hd">What's On</div>
+    <div class="panel">
+      <div class="hours" id="whatsGrid">
+        <!-- Mon-Sun text rows -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Opening Times -->
+  <section id="hours" class="section">
+    <div class="hd">Opening Times</div>
+    <div class="panel">
+      <div class="hours" id="hoursGrid">
+        <!-- Mon-Sun times -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Music (4 posters) -->
+  <section id="music" class="section">
+    <div class="hd">Live Music</div>
+    <div class="music-grid" id="musicGrid"></div>
+  </section>
+
+  <!-- Football on TV -->
+  <section id="sports" class="section sports">
+    <div class="hd">Football on TV</div>
+    <div class="grid2" id="sportsGrid">
+      <!-- fixtures rendered here -->
+    </div>
+  </section>
+
+  <!-- Gallery (videos) -->
+  <section id="gallery" class="section">
+    <div class="hd">Gallery</div>
+    <div class="panel" id="videoList">No videos yet.</div>
+  </section>
+
+  <div class="footerOak" id="footerOak" title="Tap 5× to unlock admin"></div>
+</main>
+
+<!-- Admin -->
+<dialog id="adminDlg">
+  <div class="admin">
+    <div class="title">Admin</div>
+
+    <div class="subhd">About</div>
+    <textarea id="aboutInput" rows="4"></textarea>
+
+    <div class="subhd">Drink Offers (4)</div>
+    <div class="row2">
+      <textarea id="offer1" rows="2" placeholder="Offer 1"></textarea>
+      <textarea id="offer2" rows="2" placeholder="Offer 2"></textarea>
+      <textarea id="offer3" rows="2" placeholder="Offer 3"></textarea>
+      <textarea id="offer4" rows="2" placeholder="Offer 4"></textarea>
+    </div>
+
+    <div class="subhd">What's On (Mon–Sun)</div>
+    <div class="row3">
+      <input id="whatMon" placeholder="Mon">
+      <input id="whatTue" placeholder="Tue">
+      <input id="whatWed" placeholder="Wed">
+      <input id="whatThu" placeholder="Thu">
+      <input id="whatFri" placeholder="Fri">
+      <input id="whatSat" placeholder="Sat">
+      <input id="whatSun" placeholder="Sun">
+    </div>
+
+    <div class="subhd">Opening Times (Mon–Sun)</div>
+    <div class="row3">
+      <input id="openMon" placeholder="Mon times">
+      <input id="openTue" placeholder="Tue">
+      <input id="openWed" placeholder="Wed">
+      <input id="openThu" placeholder="Thu">
+      <input id="openFri" placeholder="Fri">
+      <input id="openSat" placeholder="Sat">
+      <input id="openSun" placeholder="Sun">
+    </div>
+
+    <div class="subhd">Live Music Posters (4)</div>
+    <div class="row2">
+      <div>
+        <input id="music1Title" placeholder="Poster 1 title">
+        <textarea id="music1Notes" rows="2" placeholder="Notes"></textarea>
+        <input id="music1File" type="file" accept="image/*">
+        <button class="link" id="music1Clear">Clear poster 1</button>
+      </div>
+      <div>
+        <input id="music2Title" placeholder="Poster 2 title">
+        <textarea id="music2Notes" rows="2" placeholder="Notes"></textarea>
+        <input id="music2File" type="file" accept="image/*">
+        <button class="link" id="music2Clear">Clear poster 2</button>
+      </div>
+      <div>
+        <input id="music3Title" placeholder="Poster 3 title">
+        <textarea id="music3Notes" rows="2" placeholder="Notes"></textarea>
+        <input id="music3File" type="file" accept="image/*">
+        <button class="link" id="music3Clear">Clear poster 3</button>
+      </div>
+      <div>
+        <input id="music4Title" placeholder="Poster 4 title">
+        <textarea id="music4Notes" rows="2" placeholder="Notes"></textarea>
+        <input id="music4File" type="file" accept="image/*">
+        <button class="link" id="music4Clear">Clear poster 4</button>
+      </div>
+    </div>
+
+    <div class="subhd">Football Fixtures (up to 4)</div>
+    <div class="row2">
+      <input id="f1Home" placeholder="Fixture 1 Home">
+      <input id="f1Away" placeholder="Fixture 1 Away">
+      <input id="f1DT" placeholder="Fixture 1 Date & Time">
+      <input id="f1Chan" placeholder="Channel">
+      <input id="f2Home" placeholder="Fixture 2 Home">
+      <input id="f2Away" placeholder="Fixture 2 Away">
+      <input id="f2DT" placeholder="Fixture 2 Date & Time">
+      <input id="f2Chan" placeholder="Channel">
+    </div>
+
+    <div class="subhd">Gallery Videos (adds as you choose)</div>
+    <div class="row2">
+      <input id="videoFile" type="file" accept="video/*">
+      <button class="link" id="clearVideos">Clear videos</button>
+      <div style="grid-column:1/-1;font-size:.9rem;opacity:.75">
+        Tip: videos are stored locally; iPhone Home Screen supports small clips (storage ~5–10MB total).
+      </div>
+    </div>
+
+    <div class="subhd">Backup</div>
+    <div class="row2">
+      <button class="link" id="exportBtn">Export text data</button>
+      <input id="importFile" type="file" accept="application/json">
+      <button class="link" id="importBtn">Import</button>
+      <button class="link" id="clearAll">Clear all saved data</button>
+    </div>
+
+    <div class="actions">
+      <button class="link" id="closeAdmin">Close</button>
+      <button id="saveBtn">Save</button>
+    </div>
+  </div>
+</dialog>
+
+<script src="app.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js', { scope: './' });
+  }
+</script>
+</body>
+</html>

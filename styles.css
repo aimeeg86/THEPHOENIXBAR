@@ -1,0 +1,107 @@
+
+:root{
+  --green:#0e563d;
+  --cream:#f7f0e6;
+  --shadow:0 12px 30px rgba(0,0,0,.25);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--green);color:#2a1d10;font-family: ui-serif, Georgia, "Times New Roman", serif;}
+img{max-width:100%;display:block}
+
+.container{max-width:1100px;margin:0 auto;padding:16px}
+.hero{
+  background:#000 url('hero.jpg') center/cover no-repeat;
+  border-radius:26px;
+  height:260px;
+  box-shadow:var(--shadow);
+}
+
+.brand{
+  background: url('light-oak.jpg') center/cover no-repeat;
+  border-radius:28px;
+  padding:18px 22px;
+  margin:14px 12px 18px;
+  color:#3b2819;
+  box-shadow:var(--shadow);
+  font-weight:800;
+  font-size: clamp(28px,4.5vw,42px);
+  letter-spacing:.5px;
+  text-align:left;
+}
+
+.section{
+  background: #234e39 url('pattern.png') top left/180px auto repeat;
+  margin:22px 12px;
+  border-radius:26px;
+  padding:18px 14px 16px;
+  box-shadow:var(--shadow);
+}
+.hd{
+  display:inline-block;
+  background: url('light-oak.jpg') center/cover no-repeat;
+  color:#3b2819;
+  padding:8px 16px;
+  border-radius:18px;
+  font-weight:800;
+  margin: 6px 0 10px;
+  box-shadow:0 6px 16px rgba(0,0,0,.25);
+}
+.panel{
+  background:var(--cream);
+  border-radius:22px;
+  padding:16px;
+  margin:10px;
+  box-shadow:0 8px 22px rgba(0,0,0,.18);
+}
+
+.grid2{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:720px){.grid2{grid-template-columns:repeat(2,1fr)}}
+
+.kv{display:grid;grid-template-columns:130px 1fr;gap:8px}
+.kv .k{opacity:.75}
+
+.offers .panel{min-height:84px}
+.hours .row{display:grid;grid-template-columns:120px 1fr;gap:6px;padding:6px 0;border-bottom:1px solid rgba(0,0,0,.08)}
+.hours .row:last-child{border-bottom:0}
+
+.sports .row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sports .row > div{background:var(--cream);border-radius:12px;padding:10px;box-shadow:0 4px 12px rgba(0,0,0,.12)}
+
+.music-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  padding: 12px 16px 4px;
+}
+@media (min-width: 820px) {.music-grid { grid-template-columns: repeat(4, 1fr); } }
+.music-card{background:var(--cream);border-radius:14px;overflow:hidden;box-shadow:0 8px 22px rgba(0,0,0,.18);display:flex;flex-direction:column}
+.music-card img{width:100%;aspect-ratio:3/4;object-fit:cover;background:#ddd}
+.music-card .mc-body{padding:10px 12px 12px}
+.music-card .mc-title{font-weight:700;margin-bottom:6px}
+.music-card .mc-notes{font-size:.95rem;opacity:.85}
+
+/* Footer oak (tap 5x to unlock admin) */
+.footerOak{
+  background:url('light-oak.jpg') center/cover no-repeat;
+  height:64px;border-radius:20px;margin:20px 12px;box-shadow:var(--shadow);
+}
+
+/* Admin dialog */
+dialog{
+  border:0;border-radius:22px;max-width:980px;width:calc(100% - 20px);padding:0;box-shadow:0 14px 40px rgba(0,0,0,.45)
+}
+dialog::backdrop{background:rgba(0,0,0,.5)}
+.admin{
+  padding:18px;background:#fff;border-radius:22px;
+}
+.admin .title{font-size:30px;font-weight:800;margin-bottom:8px}
+.subhd{font-weight:800;margin:10px 0 6px}
+.admin input,.admin textarea{width:100%;padding:10px;border:1px solid #ccc;border-radius:12px}
+.admin .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.admin .row3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:680px){.admin .row2,.admin .row3{grid-template-columns:1fr}}
+.filebtn input[type=file]{display:block}
+.actions{display:flex;gap:10px;justify-content:flex-end;margin-top:12px}
+button{background:#0e563d;color:#fff;border:0;border-radius:12px;padding:10px 14px;font-weight:700}
+button.link{background:#eee;color:#333}
