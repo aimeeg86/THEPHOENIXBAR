@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Phoenix Bar</title>
+  <link rel="manifest" href="manifest.webmanifest?v=2">
+  <meta name="theme-color" content="#0e563d">
+  <link rel="icon" href="icon-192.png">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="styles.css?v=2">
+</head>
+<body>
+  <header class="brand">
+    <div class="board board--title"><h1>The Phoenix Bar</h1></div>
+  </header>
+
+  <main class="container">
+    <section class="hero"><img id="heroImg" src="hero.jpg" alt="The Phoenix Bar"></section>
+
+    <section class="section">
+      <div class="board board--label">About Us</div>
+      <div class="card">
+        <p id="aboutText">Welcome to The Phoenix Bar, your friendly local on Royal Wootton Bassett High Street. Dog friendly, locally run, and always lively — there’s always something going on! Come enjoy live music, sports, cocktails, and great company.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="board board--label">Drink Offers</div>
+      <div class="grid grid--4">
+        <div class="deal card"><h3>Deal 1</h3><p id="deal1">Happy Hour Mon–Fri 4–6pm</p></div>
+        <div class="deal card"><h3>Deal 2</h3><p id="deal2">2‑for‑£10 cocktails every Friday</p></div>
+        <div class="deal card"><h3>Deal 3</h3><p id="deal3">Local ales on rotation</p></div>
+        <div class="deal card"><h3>Deal 4</h3><p id="deal4">Prosecco Saturdays</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="board board--label">Opening Times</div>
+      <div class="grid grid--2">
+        <div class="card"><ul id="hoursList" class="list"></ul></div>
+        <div class="card">
+          <div class="board board--mini">What’s On</div>
+          <ul id="whatsOnList" class="list list--tight"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="board board--label">Live Music</div>
+      <div class="card card--media">
+        <div class="media">
+          <img id="liveImage" alt="Live Music" />
+          <div class="media__text">
+            <h3>Next Gig</h3>
+            <p id="liveText">Live every Saturday — check our socials for who’s playing!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="board board--label">Videos</div>
+      <div id="videoGallery" class="video-grid"></div>
+    </section>
+
+    <section class="section">
+      <div class="board board--label">Football on TV</div>
+      <div class="fixtures" id="fixtures"></div>
+    </section>
+  </main>
+
+  <footer id="oakFooter" class="footer board board--footer">
+    <span> </span>
+  </footer>
+
+  <!-- Admin Modal -->
+  <dialog id="adminDlg">
+    <form method="dialog" class="admin">
+      <div class="admin__head">
+        <h2>Admin</h2>
+        <button class="btn btn--ghost" id="closeAdmin" value="cancel">✕</button>
+      </div>
+
+      <section class="admin__section">
+        <h3>About Us</h3>
+        <textarea id="f_about" rows="3"></textarea>
+      </section>
+
+      <section class="admin__section">
+        <h3>Drink Offers</h3>
+        <div class="grid grid--2">
+          <label>Deal 1<textarea id="f_deal1" rows="2"></textarea></label>
+          <label>Deal 2<textarea id="f_deal2" rows="2"></textarea></label>
+          <label>Deal 3<textarea id="f_deal3" rows="2"></textarea></label>
+          <label>Deal 4<textarea id="f_deal4" rows="2"></textarea></label>
+        </div>
+      </section>
+
+      <section class="admin__section">
+        <h3>Opening Times</h3>
+        <div class="grid grid--2" id="hoursFields"></div>
+      </section>
+
+      <section class="admin__section">
+        <h3>What’s On (Mon–Sun)</h3>
+        <div class="grid grid--2" id="whatsFields"></div>
+      </section>
+
+      <section class="admin__section">
+        <h3>Live Music</h3>
+        <label>Text<textarea id="f_liveText" rows="2"></textarea></label>
+        <label>Photo<input id="f_liveImage" type="file" accept="image/*"></label>
+      </section>
+
+      <section class="admin__section">
+        <h3>Videos</h3>
+        <label>Upload video(s)<input id="f_videos" type="file" accept="video/*" multiple></label>
+        <div class="hint">Short clips recommended. Stored offline for the app on this device.</div>
+      </section>
+
+      <section class="admin__section">
+        <h3>Football Fixtures</h3>
+        <div id="fixturesFields"></div>
+        <button type="button" id="addFixture" class="btn">+ Add fixture</button>
+      </section>
+
+      <section class="admin__section admin__section--row">
+        <button class="btn btn--primary" id="saveBtn" value="default">Save</button>
+        <button class="btn" type="button" id="exportBtn">Export text data</button>
+        <label class="btn">
+          Import <input type="file" id="importFile" accept="application/json" hidden>
+        </label>
+        <button class="btn btn--ghost" type="button" id="clearAll">Clear all saved data</button>
+      </section>
+    </form>
+  </dialog>
+
+  <script src="app.js?v=2"></script>
+  <script>
+    // Register a versioned Service Worker so iOS updates reliably
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw-v1.js', { scope: './' });
+    }
+  </script>
+</body>
+</html>
