@@ -1,0 +1,15 @@
+{
+  "name": "The Phoenix Bar",
+  "short_name": "Phoenix Bar",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#b5c1a1",
+  "theme_color": "#6b4c2e",
+  "icons": [
+    {
+      "src": "Logo Phoenix.PNG",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
