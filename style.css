@@ -1,198 +1,141 @@
-/* --- Base reset --- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* === THE PHOENIX BAR STYLE === */
+* { margin:0; padding:0; box-sizing:border-box; }
 
 html, body {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-  font-family: 'Gagalin', 'Comic Sans MS', cursive;
-  background-color: #efe8d4;
-  color: #3a2a16;
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+  font-family:'Gagalin','Trebuchet MS',sans-serif;
+  background:#b5c1a1 url('Wallpaper.PNG') repeat top left;
+  background-size:150px 150px;
+  color:#2b2017;
 }
 
-/* --- Wallpaper background --- */
-body {
-  background-image: url('Wallpaper.PNG');
-  background-size: 150px 150px; /* smaller pattern for mobile */
-  background-repeat: repeat;
-  background-attachment: scroll; /* prevent iOS Safari bug */
-  background-position: top left;
+/* Fix iPhone wallpaper shift */
+body{ background-attachment:scroll; }
+@media (min-width:700px){
+  body{ background-attachment:fixed; background-size:220px 220px; }
 }
 
-/* Fixed wallpaper for larger screens */
-@media (min-width: 700px) {
-  body {
-    background-attachment: fixed;
-  }
+/* Header & Footer */
+.header,.footer{
+  background:url('Oak light.jpg') center/cover no-repeat;
+  text-align:center;
+  color:#3a2b1d;
+  padding:1rem;
+  font-size:2rem;
+  width:100%;
+  border-top:4px solid #b49361;
+  border-bottom:4px solid #b49361;
+}
+.footer{ font-size:1rem; }
+
+/* Quick bar */
+.quickbar{
+  display:flex;
+  justify-content:center;
+  gap:.5rem;
+  background:rgba(255,249,240,.9);
+  padding:.5rem;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.quick{
+  text-decoration:none;
+  background:#f5e8ce;
+  border:2px solid #b49361;
+  padding:.4rem .8rem;
+  border-radius:8px;
+  color:#3a2b1d;
 }
 
-/* --- Header & Footer --- */
-.header, .footer {
-  background-image: url('Oak light.jpg');
-  background-size: cover;
-  text-align: center;
-  color: #2e1b0d;
-  padding: 20px 10px;
-  font-size: 2em;
-  letter-spacing: 1px;
-  border-bottom: 4px solid #a67c42;
-  box-shadow: inset 0 -2px 8px rgba(0,0,0,0.2);
-  width: 100vw;
-  margin-left: 50%;
-  transform: translateX(-50%);
+/* Hero */
+.hero img{ width:100%; height:auto; display:block; }
+
+/* Main layout */
+main{
+  max-width:900px;
+  margin:auto;
+  padding:1rem;
+  display:grid;
+  gap:1rem;
 }
 
-.footer {
-  border-top: 4px solid #a67c42;
-  border-bottom: none;
-  box-shadow: inset 0 2px 8px rgba(0,0,0,0.2);
+/* Sections */
+.section{
+  background:rgba(255,249,240,0.95);
+  border:5px solid #b49361;
+  border-radius:14px;
+  padding:1rem;
+}
+.section h2{
+  background:url('Oak light.jpg') center/cover no-repeat;
+  display:inline-block;
+  padding:.4rem .8rem;
+  border-radius:10px;
+  color:#3a2b1d;
+  text-shadow:inset 0 2px 3px #0005;
+  margin-bottom:.5rem;
 }
 
-/* --- Quick Action Bar (Call / Directions) --- */
-.quickbar {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  background-color: rgba(246, 240, 224, 0.9);
-  padding: 10px;
-  border-bottom: 2px solid #b49361;
-  position: sticky;
-  top: 0;
-  z-index: 10;
+/* Boxes and grids */
+.box, .editable{
+  background:#fffdf6;
+  border-radius:10px;
+  padding:.5rem;
+  margin:.3rem 0;
+  border:2px solid #b49361;
 }
-.quickbar button {
-  background-color: #d9c297;
-  border: 2px solid #7a5a2b;
-  border-radius: 10px;
-  padding: 5px 15px;
-  font-size: 1em;
-  font-weight: bold;
-  color: #3a2a16;
-}
-.quickbar button:hover {
-  background-color: #e8d4a2;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+  gap:.5rem;
 }
 
-/* --- Section Panels --- */
-.section {
-  margin: 15px auto;
-  padding: 10px 15px;
-  width: 92%;
-  max-width: 700px;
-  background-color: #f8f2e2;
-  border: 10px solid transparent;
-  border-image: url('Oak light.jpg') 30 round;
-  border-radius: 14px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+/* Gallery & videos */
+#galleryGrid,#videoGrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(120px,1fr));
+  gap:8px;
+  margin-top:8px;
+}
+#galleryGrid img,#videoGrid video{
+  width:100%;
+  border:2px solid #b49361;
+  border-radius:10px;
+  object-fit:cover;
 }
 
-/* --- Section Titles (engraved wood plaques) --- */
-.section h2 {
-  display: inline-block;
-  background-image: url('Oak light.jpg');
-  background-size: cover;
-  color: #2b1809;
-  font-size: 1.4em;
-  padding: 6px 12px;
-  border-radius: 8px;
-  border: 2px dashed #5b3a16;
-  margin-bottom: 8px;
-  text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+/* Editor bar */
+#editorBar{
+  position:fixed;
+  bottom:0;
+  left:0; right:0;
+  background:rgba(239,232,212,0.96);
+  border-top:2px solid #b49361;
+  text-align:center;
+  padding:8px;
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+  z-index:99;
 }
+#editorBar.hidden{ display:none; }
+#editorBar button,#editorBar label{
+  background:#d9c297;
+  border:2px solid #7a5a2b;
+  border-radius:10px;
+  padding:4px 10px;
+  font-weight:bold;
+  cursor:pointer;
+}
+#editorBar button:hover,#editorBar label:hover{ background:#e8d4a2; }
+.filebtn input{ display:none; }
 
-/* --- Text and content boxes --- */
-.section p,
-.section div,
-.section li {
-  font-size: 1em;
-  line-height: 1.4em;
-}
-
-/* --- Box layout for deals, days, etc. --- */
-.box {
-  background-color: #fcf8ec;
-  border: 2px solid #b49361;
-  border-radius: 10px;
-  margin: 6px 0;
-  padding: 10px;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-}
-
-/* --- Hero image --- */
-.hero img {
-  width: 100%;
-  height: auto;
-  border-bottom: 3px solid #a67c42;
-  display: block;
-}
-
-/* --- Editor bar --- */
-#editorBar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(239,232,212,0.96);
-  border-top: 2px solid #b49361;
-  text-align: center;
-  padding: 8px;
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  z-index: 99;
-}
-#editorBar.hidden { display: none; }
-#editorBar button, #editorBar label {
-  background-color: #d9c297;
-  border: 2px solid #7a5a2b;
-  border-radius: 10px;
-  padding: 4px 10px;
-  font-weight: bold;
-  cursor: pointer;
-}
-#editorBar button:hover, #editorBar label:hover {
-  background-color: #e8d4a2;
-}
-.filebtn input {
-  display: none;
-}
-
-/* --- Gallery & Video grids --- */
-#galleryGrid, #videoGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 8px;
-  margin-top: 8px;
-}
-#galleryGrid img, #videoGrid video {
-  width: 100%;
-  border: 2px solid #b49361;
-  border-radius: 10px;
-  object-fit: cover;
-}
-
-/* --- Responsiveness --- */
-@media (min-width: 768px) {
-  .section {
-    width: 80%;
-  }
-  .section h2 {
-    font-size: 1.6em;
-  }
-  .box {
-    font-size: 1.1em;
-  }
-}
-
-/* --- Prevent horizontal scroll (iPhone fix) --- */
-body, html {
-  overflow-x: hidden;
-}
-.quickbar, .hero img, main, .section {
-  max-width: 100%;
+/* Responsive */
+@media (max-width:600px){
+  body{ font-size:.9rem; }
+  .grid{ grid-template-columns:1fr; }
 }
