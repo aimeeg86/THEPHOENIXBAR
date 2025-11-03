@@ -1,240 +1,105 @@
-/* === THE PHOENIX BAR STYLE v11 === */
+/* === THE PHOENIX BAR STYLE v12 === */
 
-/* Basic reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* Reset */
+* { margin:0; padding:0; box-sizing:border-box; }
 
-/* Global styles */
+/* Global */
 html, body {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-  font-family: 'Gagalin', 'Trebuchet MS', sans-serif;
-  color: #2b2017;
-  background-color: #b5c1a1;
-  background-image: url('Wallpaper.PNG');
-  background-repeat: repeat;
-  background-position: top left;
-  background-size: 150px 150px;  /* smaller pattern for mobile */
-  background-attachment: scroll; /* prevent iOS Safari bug */
+  width:100%; max-width:100%; overflow-x:hidden;
+  font-family:'Gagalin','Trebuchet MS',sans-serif;
+  color:#2b2017; background-color:#b5c1a1;
+  background-image:url('Wallpaper.PNG'); background-repeat:repeat;
+  background-position:top left; background-size:150px 150px;
+  /* iOS fix: no fixed on phones */
+  background-attachment:scroll;
+}
+@media (min-width:700px){
+  body{ background-attachment:fixed; background-size:220px 220px; }
 }
 
-/* Re-enable fixed background for larger screens */
-@media (min-width: 700px) {
-  body {
-    background-attachment: fixed;
-    background-size: 220px 220px;
-  }
+/* Header / Footer */
+.header,.footer{
+  background:url('Oak light.jpg') center/cover no-repeat;
+  text-align:center; color:#3a2b1d; padding:1rem;
+  border-top:4px solid #b49361; border-bottom:4px solid #b49361;
+  width:100%; margin:0 auto;
+  box-shadow: inset 0 -2px 8px rgba(0,0,0,.2);
+}
+.footer{ font-size:1rem; box-shadow: inset 0 2px 8px rgba(0,0,0,.2); }
+.header .engraved{ font-size:2.2rem; text-shadow:1px 1px 2px rgba(0,0,0,.3); }
+
+/* Quickbar */
+.quickbar{
+  display:flex; justify-content:center; gap:.5rem;
+  background:rgba(255,249,240,.9); padding:.5rem;
+  border-bottom:2px solid #b49361; position:sticky; top:0; z-index:10;
+}
+.quick{
+  text-decoration:none; background:#f5e8ce; border:2px solid #b49361;
+  padding:.4rem .8rem; border-radius:8px; color:#3a2b1d; font-weight:bold;
+  box-shadow:0 1px 2px rgba(0,0,0,.2);
+}
+.quick:hover{ background:#e8d4a2; }
+
+/* Hero */
+.hero img{ width:100%; height:auto; display:block; border-bottom:3px solid #a67c42; }
+
+/* Layout */
+main{ max-width:900px; margin:1rem auto; padding:0 1rem 3rem; display:flex; flex-direction:column; gap:1rem; }
+
+/* Sections */
+.section{
+  background:rgba(255,249,240,.96);
+  border:8px solid transparent; border-image:url('Oak light.jpg') 30 round;
+  border-radius:14px; padding:1rem; box-shadow:0 2px 6px rgba(0,0,0,.2);
+  width:92%; margin:0 auto;
+}
+.section h2{
+  display:inline-block; background-image:url('Oak light.jpg'); background-size:cover;
+  color:#2b1809; font-size:1.5rem; padding:6px 12px; border-radius:8px;
+  border:2px dashed #5b3a16; margin-bottom:10px; text-shadow:1px 1px 1px rgba(0,0,0,.25);
 }
 
-/* Header and Footer */
-.header, .footer {
-  background-image: url('Oak light.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  text-align: center;
-  color: #3a2b1d;
-  padding: 1rem;
-  border-top: 4px solid #b49361;
-  border-bottom: 4px solid #b49361;
-  width: 100%;
-  margin: 0 auto;
-  box-shadow: inset 0 -2px 8px rgba(0,0,0,0.2);
+/* Editable content boxes */
+.box, .editable{
+  background:#fffdf6; border-radius:10px; border:2px solid #b49361;
+  padding:.5rem; margin:.3rem 0; line-height:1.4em;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
 }
-.header h1 {
-  font-size: 2.2rem;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-}
-.footer {
-  font-size: 1rem;
-  box-shadow: inset 0 2px 8px rgba(0,0,0,0.2);
-}
+.editable:focus{ outline:2px dashed #e57300; background:#fffbed; }
 
-/* Quick Action Bar (Call / Directions) */
-.quickbar {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  background-color: rgba(255, 249, 240, 0.9);
-  padding: 0.5rem;
-  border-bottom: 2px solid #b49361;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-.quick {
-  text-decoration: none;
-  background-color: #f5e8ce;
-  border: 2px solid #b49361;
-  padding: 0.4rem 0.8rem;
-  border-radius: 8px;
-  color: #3a2b1d;
-  font-weight: bold;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-}
-.quick:hover {
-  background-color: #e8d4a2;
-}
+/* Grids */
+.grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:.5rem; }
 
-/* Hero image */
-.hero img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-bottom: 3px solid #a67c42;
-}
-
-/* Main content layout */
-main {
-  max-width: 900px;
-  margin: 1rem auto;
-  padding: 0 1rem 3rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-/* Section panels */
-.section {
-  background-color: rgba(255, 249, 240, 0.96);
-  border: 8px solid transparent;
-  border-image: url('Oak light.jpg') 30 round;
-  border-radius: 14px;
-  padding: 1rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  width: 92%;
-  margin: 0 auto;
-}
-
-/* Section titles (engraved plaques) */
-.section h2 {
-  display: inline-block;
-  background-image: url('Oak light.jpg');
-  background-size: cover;
-  color: #2b1809;
-  font-size: 1.5rem;
-  padding: 6px 12px;
-  border-radius: 8px;
-  border: 2px dashed #5b3a16;
-  margin-bottom: 10px;
-  text-shadow: 1px 1px 1px rgba(0,0,0,0.25);
-}
-
-/* Editable boxes */
-.box, .editable {
-  background-color: #fffdf6;
-  border-radius: 10px;
-  border: 2px solid #b49361;
-  padding: 0.5rem;
-  margin: 0.3rem 0;
-  line-height: 1.4em;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-}
-
-/* Lists inside sections */
-.section ul, .section li {
-  list-style: none;
-  font-size: 1em;
-  line-height: 1.4em;
-}
-
-/* Grid layouts */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 0.5rem;
-}
-#galleryGrid, #videoGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 8px;
-  margin-top: 8px;
-}
-#galleryGrid img, #videoGrid video {
-  width: 100%;
-  border: 2px solid #b49361;
-  border-radius: 10px;
-  object-fit: cover;
-  display: block;
-}
+/* Media cards */
+#galleryGrid, #videoGrid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:8px; margin-top:8px; }
+#galleryGrid img, #videoGrid video{ width:100%; border:2px solid #b49361; border-radius:10px; object-fit:cover; display:block; }
 
 /* Editor bar */
-#editorBar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(239,232,212,0.96);
-  border-top: 2px solid #b49361;
-  text-align: center;
-  padding: 8px;
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  z-index: 99;
+#editorBar{
+  position:fixed; left:0; right:0; bottom:0;
+  background:rgba(239,232,212,.96); border-top:2px solid #b49361;
+  padding:8px; display:flex; justify-content:center; gap:8px; flex-wrap:wrap; z-index:99;
 }
-#editorBar.hidden {
-  display: none;
+#editorBar.hidden{ display:none; }
+#editorBar button, #editorBar label{
+  background:#d9c297; border:2px solid #7a5a2b; border-radius:10px; padding:4px 10px; font-weight:bold; cursor:pointer;
 }
-#editorBar button, #editorBar label {
-  background-color: #d9c297;
-  border: 2px solid #7a5a2b;
-  border-radius: 10px;
-  padding: 4px 10px;
-  font-weight: bold;
-  cursor: pointer;
-}
-#editorBar button:hover, #editorBar label:hover {
-  background-color: #e8d4a2;
-}
-.filebtn input {
-  display: none;
-}
+#editorBar button:hover, #editorBar label:hover{ background:#e8d4a2; }
+.filebtn input{ display:none; }
 
-/* Responsive adjustments */
-@media (max-width: 600px) {
-  body {
-    font-size: 0.95rem;
-  }
-  .section {
-    width: 94%;
-    padding: 0.8rem;
-  }
-  .section h2 {
-    font-size: 1.3rem;
-  }
-  .quickbar {
-    flex-wrap: wrap;
-  }
-  .grid {
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-  }
-}
+/* Wrap long URLs/text inside boxes (fix Facebook link overflow) */
+.editable, .box, .section li, .section div { overflow-wrap:anywhere; word-break:break-word; white-space:normal; }
+.editable a, .box a { overflow-wrap:anywhere; word-break:break-word; }
 
-/* iPhone/mobile hardening (v11) */
-html, body {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-}
-* {
-  max-width: 100%;
-  box-sizing: border-box;
-}
-.header, .footer {
-  width: 100%;
-  margin: 0 auto;
-  transform: none;
-}
-.quickbar, .hero img, main, .section {
-  max-width: 100%;
-}
-.section {
-  width: 92%;
-  margin-left: auto;
-  margin-right: auto;
+/* Hide upload inputs unless in edit mode */
+body:not(.edit-mode) [data-upload]{ display:none !important; }
+
+/* Responsive */
+@media (max-width:600px){
+  body{ font-size:.95rem; }
+  .section{ width:94%; padding:.8rem; }
+  .section h2{ font-size:1.3rem; }
+  .quickbar{ flex-wrap:wrap; }
+  .grid{ grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); }
 }
