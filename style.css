@@ -1,123 +1,198 @@
-@font-face{
-  font-family:'Gagalin';
-  src: url('Gagalin.woff2') format('woff2'),
-       url('Gagalin.woff') format('woff');
-  font-display: swap;
+/* --- Base reset --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-:root{
-  --ink:#2b2017;
-  --oak:#b49361;
-  --parchment: rgba(255,249,240,.95);
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  font-family: 'Gagalin', 'Comic Sans MS', cursive;
+  background-color: #efe8d4;
+  color: #3a2a16;
 }
 
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{
-  font-family:'Gagalin','Trebuchet MS','Gill Sans','Segoe UI',system-ui,sans-serif;
-  color: var(--ink);
-  /* Repeating (smaller) wallpaper pattern */
-  background: #b5c1a1 url('Wallpaper.PNG') top left repeat fixed;
-  background-size: 260px auto;
-  scroll-behavior: smooth;
+/* --- Wallpaper background --- */
+body {
+  background-image: url('Wallpaper.PNG');
+  background-size: 150px 150px; /* smaller pattern for mobile */
+  background-repeat: repeat;
+  background-attachment: scroll; /* prevent iOS Safari bug */
+  background-position: top left;
 }
 
-@media (max-width:600px){
-  body{ background-size: 160px auto; }
+/* Fixed wallpaper for larger screens */
+@media (min-width: 700px) {
+  body {
+    background-attachment: fixed;
+  }
 }
 
-.header,.footer{
-  background: url('Oak light.jpg') center/cover no-repeat;
-  text-align:center;
-  padding: 12px 10px;
-  color:#3a2b1d;
-}
-.footer{ border-top: 5px solid var(--oak); }
-
-.engraved{
-  margin:0;
-  font-size: clamp(28px, 7vw, 64px);
-  letter-spacing:.02em;
-  /* subtle engraved look */
-  text-shadow: 0 1px 0 #0002, inset 0 2px 3px #0006;
-  -webkit-text-stroke: .3px #0001;
-}
-
-.quickbar{
-  display:flex; gap:8px; justify-content:center; padding:8px;
-  background: rgba(255,249,240,0.8);
-  position: sticky; top: 0; z-index: 10;
-}
-.quick{
-  text-decoration:none; background:#f5e8ce; border:2px solid var(--oak);
-  padding:.45rem .8rem; border-radius:10px; color:#3a2b1d;
+/* --- Header & Footer --- */
+.header, .footer {
+  background-image: url('Oak light.jpg');
+  background-size: cover;
+  text-align: center;
+  color: #2e1b0d;
+  padding: 20px 10px;
+  font-size: 2em;
+  letter-spacing: 1px;
+  border-bottom: 4px solid #a67c42;
+  box-shadow: inset 0 -2px 8px rgba(0,0,0,0.2);
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 
-.hero img{ width:100%; height:auto; display:block }
-
-main{ max-width: 960px; margin:0 auto; padding: 12px; display:grid; gap: 12px }
-
-.panel{
-  background: var(--parchment);
-  border: 5px solid var(--oak);
-  border-radius: 14px;
-  padding: 12px;
+.footer {
+  border-top: 4px solid #a67c42;
+  border-bottom: none;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.2);
 }
 
-.plaque{
-  background: url('Oak light.jpg') center/cover no-repeat;
-  display:inline-block;
-  padding: 6px 10px;
+/* --- Quick Action Bar (Call / Directions) --- */
+.quickbar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  background-color: rgba(246, 240, 224, 0.9);
+  padding: 10px;
+  border-bottom: 2px solid #b49361;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.quickbar button {
+  background-color: #d9c297;
+  border: 2px solid #7a5a2b;
   border-radius: 10px;
-  color:#3a2b1d;
-  text-shadow: 0 1px 0 #0002, inset 0 2px 3px #0006;
+  padding: 5px 15px;
+  font-size: 1em;
+  font-weight: bold;
+  color: #3a2a16;
+}
+.quickbar button:hover {
+  background-color: #e8d4a2;
 }
 
-.grid{ display:grid; gap: 8px }
-.grid-2{ grid-template-columns: repeat(2, minmax(0,1fr)); }
-.grid-3{ grid-template-columns: repeat(3, minmax(0,1fr)); }
-
-@media (max-width:700px){
-  .grid-2{ grid-template-columns: 1fr; }
-  .grid-3{ grid-template-columns: 1fr 1fr; }
+/* --- Section Panels --- */
+.section {
+  margin: 15px auto;
+  padding: 10px 15px;
+  width: 92%;
+  max-width: 700px;
+  background-color: #f8f2e2;
+  border: 10px solid transparent;
+  border-image: url('Oak light.jpg') 30 round;
+  border-radius: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
-.box{
-  background:#fff;
-  padding:.8rem;
-  border-radius:10px;
-  border:2px solid var(--oak);
+/* --- Section Titles (engraved wood plaques) --- */
+.section h2 {
+  display: inline-block;
+  background-image: url('Oak light.jpg');
+  background-size: cover;
+  color: #2b1809;
+  font-size: 1.4em;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 2px dashed #5b3a16;
+  margin-bottom: 8px;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 }
 
-.livecard .poster img{
-  width:100%; height:auto; display:block;
-  border-radius:10px; border:2px solid var(--oak);
-}
-.small{ font-size:.9em; opacity:.85 }
-
-.hours{
-  list-style:none; padding:0; margin:0;
-}
-.hours li{
-  display:flex; justify-content:space-between; gap:12px;
-  padding:.5rem 0; border-bottom:1px dashed var(--oak);
-}
-.hours li:last-child{ border-bottom:none }
-
-.editable:focus{
-  outline: 2px dashed #e57300;
-  background: #fffdf6;
+/* --- Text and content boxes --- */
+.section p,
+.section div,
+.section li {
+  font-size: 1em;
+  line-height: 1.4em;
 }
 
-/* Editor toolbar */
-.editor{
-  position:fixed; left:50%; transform:translateX(-50%);
-  bottom:12px; background:#fff; border:2px solid var(--oak);
-  border-radius:12px; padding:8px; display:flex; flex-wrap:wrap; gap:8px;
-  z-index:9999;
+/* --- Box layout for deals, days, etc. --- */
+.box {
+  background-color: #fcf8ec;
+  border: 2px solid #b49361;
+  border-radius: 10px;
+  margin: 6px 0;
+  padding: 10px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 }
-.editor.hidden{ display:none }
-.filebtn{
-  border:2px dashed var(--oak); border-radius:10px; padding:6px 8px; background:#fff;
+
+/* --- Hero image --- */
+.hero img {
+  width: 100%;
+  height: auto;
+  border-bottom: 3px solid #a67c42;
+  display: block;
 }
-.filebtn input{ display:none }
+
+/* --- Editor bar --- */
+#editorBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(239,232,212,0.96);
+  border-top: 2px solid #b49361;
+  text-align: center;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  z-index: 99;
+}
+#editorBar.hidden { display: none; }
+#editorBar button, #editorBar label {
+  background-color: #d9c297;
+  border: 2px solid #7a5a2b;
+  border-radius: 10px;
+  padding: 4px 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+#editorBar button:hover, #editorBar label:hover {
+  background-color: #e8d4a2;
+}
+.filebtn input {
+  display: none;
+}
+
+/* --- Gallery & Video grids --- */
+#galleryGrid, #videoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+#galleryGrid img, #videoGrid video {
+  width: 100%;
+  border: 2px solid #b49361;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* --- Responsiveness --- */
+@media (min-width: 768px) {
+  .section {
+    width: 80%;
+  }
+  .section h2 {
+    font-size: 1.6em;
+  }
+  .box {
+    font-size: 1.1em;
+  }
+}
+
+/* --- Prevent horizontal scroll (iPhone fix) --- */
+body, html {
+  overflow-x: hidden;
+}
+.quickbar, .hero img, main, .section {
+  max-width: 100%;
+}
