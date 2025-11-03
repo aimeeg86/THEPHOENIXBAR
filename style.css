@@ -1,102 +1,123 @@
-@font-face {
-  font-family: 'Gagalin';
+@font-face{
+  font-family:'Gagalin';
   src: url('Gagalin.woff2') format('woff2'),
        url('Gagalin.woff') format('woff');
   font-display: swap;
 }
 
-body {
-  margin: 0;
-  font-family: 'Gagalin', 'Trebuchet MS', sans-serif;
-  background: #b5c1a1 url('Wallpaper.PNG') center/cover fixed no-repeat;
-  color: #2b2017;
+:root{
+  --ink:#2b2017;
+  --oak:#b49361;
+  --parchment: rgba(255,249,240,.95);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:'Gagalin','Trebuchet MS','Gill Sans','Segoe UI',system-ui,sans-serif;
+  color: var(--ink);
+  /* Repeating (smaller) wallpaper pattern */
+  background: #b5c1a1 url('Wallpaper.PNG') top left repeat fixed;
+  background-size: 260px auto;
   scroll-behavior: smooth;
 }
 
-.header, .footer {
+@media (max-width:600px){
+  body{ background-size: 160px auto; }
+}
+
+.header,.footer{
   background: url('Oak light.jpg') center/cover no-repeat;
-  text-align: center;
-  padding: 1rem;
-  color: #3a2b1d;
+  text-align:center;
+  padding: 12px 10px;
+  color:#3a2b1d;
+}
+.footer{ border-top: 5px solid var(--oak); }
+
+.engraved{
+  margin:0;
+  font-size: clamp(28px, 7vw, 64px);
+  letter-spacing:.02em;
+  /* subtle engraved look */
+  text-shadow: 0 1px 0 #0002, inset 0 2px 3px #0006;
+  -webkit-text-stroke: .3px #0001;
 }
 
-.engraved {
-  font-size: clamp(2rem, 6vw, 4rem);
-  text-shadow: inset 0 2px 3px #0005, 0 1px 0 #fff4;
-}
-
-.quickbar {
-  display: flex;
-  justify-content: center;
-  gap: .5rem;
+.quickbar{
+  display:flex; gap:8px; justify-content:center; padding:8px;
   background: rgba(255,249,240,0.8);
-  padding: .5rem;
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  position: sticky; top: 0; z-index: 10;
+}
+.quick{
+  text-decoration:none; background:#f5e8ce; border:2px solid var(--oak);
+  padding:.45rem .8rem; border-radius:10px; color:#3a2b1d;
 }
 
-.quick {
-  text-decoration: none;
-  background: #f5e8ce;
-  border: 2px solid #b49361;
-  padding: .4rem .8rem;
-  border-radius: 8px;
-  color: #3a2b1d;
-}
+.hero img{ width:100%; height:auto; display:block }
 
-.hero img { width: 100%; height: auto; display: block; }
+main{ max-width: 960px; margin:0 auto; padding: 12px; display:grid; gap: 12px }
 
-main {
-  max-width: 900px;
-  margin: auto;
-  padding: 1rem;
-  display: grid;
-  gap: 1rem;
-}
-
-.panel {
-  background: rgba(255,249,240,0.95);
-  border: 5px solid #b49361;
+.panel{
+  background: var(--parchment);
+  border: 5px solid var(--oak);
   border-radius: 14px;
-  padding: 1rem;
+  padding: 12px;
 }
 
-.plaque {
+.plaque{
   background: url('Oak light.jpg') center/cover no-repeat;
-  display: inline-block;
-  padding: .4rem .8rem;
+  display:inline-block;
+  padding: 6px 10px;
   border-radius: 10px;
-  color: #3a2b1d;
-  text-shadow: inset 0 2px 3px #0005;
+  color:#3a2b1d;
+  text-shadow: 0 1px 0 #0002, inset 0 2px 3px #0006;
 }
 
-.grid {
-  display: grid;
-  gap: .5rem;
+.grid{ display:grid; gap: 8px }
+.grid-2{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+.grid-3{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+
+@media (max-width:700px){
+  .grid-2{ grid-template-columns: 1fr; }
+  .grid-3{ grid-template-columns: 1fr 1fr; }
 }
 
-.box {
-  background: #fff;
-  padding: .8rem;
-  border-radius: 10px;
-  border: 2px solid #b49361;
+.box{
+  background:#fff;
+  padding:.8rem;
+  border-radius:10px;
+  border:2px solid var(--oak);
 }
 
-ul { list-style: none; padding: 0; }
-li { margin: .3rem 0; }
-
-.footer {
-  border-top: 5px solid #b49361;
-  font-size: 1rem;
+.livecard .poster img{
+  width:100%; height:auto; display:block;
+  border-radius:10px; border:2px solid var(--oak);
 }
+.small{ font-size:.9em; opacity:.85 }
 
-.editable:focus {
+.hours{
+  list-style:none; padding:0; margin:0;
+}
+.hours li{
+  display:flex; justify-content:space-between; gap:12px;
+  padding:.5rem 0; border-bottom:1px dashed var(--oak);
+}
+.hours li:last-child{ border-bottom:none }
+
+.editable:focus{
   outline: 2px dashed #e57300;
   background: #fffdf6;
 }
 
-@media (max-width:600px) {
-  body { font-size: .9rem; }
-  .grid { grid-template-columns: 1fr; }
+/* Editor toolbar */
+.editor{
+  position:fixed; left:50%; transform:translateX(-50%);
+  bottom:12px; background:#fff; border:2px solid var(--oak);
+  border-radius:12px; padding:8px; display:flex; flex-wrap:wrap; gap:8px;
+  z-index:9999;
 }
+.editor.hidden{ display:none }
+.filebtn{
+  border:2px dashed var(--oak); border-radius:10px; padding:6px 8px; background:#fff;
+}
+.filebtn input{ display:none }
