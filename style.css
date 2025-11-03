@@ -1,0 +1,102 @@
+@font-face {
+  font-family: 'Gagalin';
+  src: url('Gagalin.woff2') format('woff2'),
+       url('Gagalin.woff') format('woff');
+  font-display: swap;
+}
+
+body {
+  margin: 0;
+  font-family: 'Gagalin', 'Trebuchet MS', sans-serif;
+  background: #b5c1a1 url('Wallpaper.PNG') center/cover fixed no-repeat;
+  color: #2b2017;
+  scroll-behavior: smooth;
+}
+
+.header, .footer {
+  background: url('Oak light.jpg') center/cover no-repeat;
+  text-align: center;
+  padding: 1rem;
+  color: #3a2b1d;
+}
+
+.engraved {
+  font-size: clamp(2rem, 6vw, 4rem);
+  text-shadow: inset 0 2px 3px #0005, 0 1px 0 #fff4;
+}
+
+.quickbar {
+  display: flex;
+  justify-content: center;
+  gap: .5rem;
+  background: rgba(255,249,240,0.8);
+  padding: .5rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.quick {
+  text-decoration: none;
+  background: #f5e8ce;
+  border: 2px solid #b49361;
+  padding: .4rem .8rem;
+  border-radius: 8px;
+  color: #3a2b1d;
+}
+
+.hero img { width: 100%; height: auto; display: block; }
+
+main {
+  max-width: 900px;
+  margin: auto;
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.panel {
+  background: rgba(255,249,240,0.95);
+  border: 5px solid #b49361;
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.plaque {
+  background: url('Oak light.jpg') center/cover no-repeat;
+  display: inline-block;
+  padding: .4rem .8rem;
+  border-radius: 10px;
+  color: #3a2b1d;
+  text-shadow: inset 0 2px 3px #0005;
+}
+
+.grid {
+  display: grid;
+  gap: .5rem;
+}
+
+.box {
+  background: #fff;
+  padding: .8rem;
+  border-radius: 10px;
+  border: 2px solid #b49361;
+}
+
+ul { list-style: none; padding: 0; }
+li { margin: .3rem 0; }
+
+.footer {
+  border-top: 5px solid #b49361;
+  font-size: 1rem;
+}
+
+.editable:focus {
+  outline: 2px dashed #e57300;
+  background: #fffdf6;
+}
+
+@media (max-width:600px) {
+  body { font-size: .9rem; }
+  .grid { grid-template-columns: 1fr; }
+}
