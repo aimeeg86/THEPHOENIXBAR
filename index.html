@@ -28,76 +28,162 @@
 
   <main>
 
+    <!-- About -->
     <section class="panel" id="about">
       <h2 class="plaque">About Us</h2>
-      <div contenteditable="true" class="editable">Welcome to The Phoenix Bar — a friendly local with live music, sport on TV, and a fine selection of beers.</div>
+      <div class="editable">Welcome to The Phoenix Bar — a friendly local with live music, sport on TV, and a fine selection of beers.</div>
     </section>
 
+    <!-- Drink Deals (4 boxes) -->
     <section class="panel" id="deals">
       <h2 class="plaque">Drink Deals</h2>
       <div class="grid">
-        <div class="box editable">Monday Madness – £3 Pints</div>
-        <div class="box editable">Two for One Cocktails</div>
-        <div class="box editable">Happy Hour 5–7pm</div>
+        <div class="box editable" data-key="deals.0">Deal 1 — Tap to edit</div>
+        <div class="box editable" data-key="deals.1">Deal 2 — Tap to edit</div>
+        <div class="box editable" data-key="deals.2">Deal 3 — Tap to edit</div>
+        <div class="box editable" data-key="deals.3">Deal 4 — Tap to edit</div>
       </div>
     </section>
 
+    <!-- Beer on Draught -->
     <section class="panel" id="beer">
       <h2 class="plaque">Beer on Draught</h2>
-      <ul class="editable">
+      <ul class="editable" data-key="beer.list">
         <li>Best Bitter – 4.1%</li>
         <li>IPA – 5.2%</li>
         <li>Stout – 4.5%</li>
       </ul>
     </section>
 
+    <!-- What’s On (7 days) -->
     <section class="panel" id="whatson">
       <h2 class="plaque">What’s On</h2>
       <div class="grid">
-        <div class="box editable">Monday: Quiz Night</div>
-        <div class="box editable">Friday: Karaoke</div>
-        <div class="box editable">Saturday: Live Band</div>
+        <div class="box editable" data-key="whatson.mon"><strong>Monday</strong><br>Tap to add details</div>
+        <div class="box editable" data-key="whatson.tue"><strong>Tuesday</strong><br>Tap to add details</div>
+        <div class="box editable" data-key="whatson.wed"><strong>Wednesday</strong><br>Tap to add details</div>
+        <div class="box editable" data-key="whatson.thu"><strong>Thursday</strong><br>Tap to add details</div>
+        <div class="box editable" data-key="whatson.fri"><strong>Friday</strong><br>Tap to add details</div>
+        <div class="box editable" data-key="whatson.sat"><strong>Saturday</strong><br>Tap to add details</div>
+        <div class="box editable" data-key="whatson.sun"><strong>Sunday</strong><br>Tap to add details</div>
       </div>
     </section>
 
+    <!-- Live Music (4 posters) -->
     <section class="panel" id="livemusic">
       <h2 class="plaque">Live Music</h2>
-      <div class="grid">
-        <div class="box editable">Band A — Sat 7PM</div>
-        <div class="box editable">Band B — Sun 5PM</div>
+      <div class="grid grid-2">
+        <div class="livecard" data-index="0">
+          <div class="poster"><img id="live0Poster" alt="Poster 1"></div>
+          <div class="meta">
+            <div class="editable" data-key="live.0.act">Band/Act</div>
+            <div class="small">
+              <span class="editable" data-key="live.0.day">Day</span> ·
+              <span class="editable" data-key="live.0.date">Date</span> ·
+              <span class="editable" data-key="live.0.time">Time</span>
+            </div>
+          </div>
+        </div>
+        <div class="livecard" data-index="1">
+          <div class="poster"><img id="live1Poster" alt="Poster 2"></div>
+          <div class="meta">
+            <div class="editable" data-key="live.1.act">Band/Act</div>
+            <div class="small">
+              <span class="editable" data-key="live.1.day">Day</span> ·
+              <span class="editable" data-key="live.1.date">Date</span> ·
+              <span class="editable" data-key="live.1.time">Time</span>
+            </div>
+          </div>
+        </div>
+        <div class="livecard" data-index="2">
+          <div class="poster"><img id="live2Poster" alt="Poster 3"></div>
+          <div class="meta">
+            <div class="editable" data-key="live.2.act">Band/Act</div>
+            <div class="small">
+              <span class="editable" data-key="live.2.day">Day</span> ·
+              <span class="editable" data-key="live.2.date">Date</span> ·
+              <span class="editable" data-key="live.2.time">Time</span>
+            </div>
+          </div>
+        </div>
+        <div class="livecard" data-index="3">
+          <div class="poster"><img id="live3Poster" alt="Poster 4"></div>
+          <div class="meta">
+            <div class="editable" data-key="live.3.act">Band/Act</div>
+            <div class="small">
+              <span class="editable" data-key="live.3.day">Day</span> ·
+              <span class="editable" data-key="live.3.date">Date</span> ·
+              <span class="editable" data-key="live.3.time">Time</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- Football Fixtures (3) -->
     <section class="panel" id="fixtures">
       <h2 class="plaque">Football Fixtures</h2>
       <div class="grid">
-        <div class="box editable">Chelsea vs Arsenal — Sat 12:30 — Sky Sports</div>
-        <div class="box editable">Man Utd vs Liverpool — Sun 16:30 — TNT</div>
+        <div class="box">
+          <div><span class="editable" data-key="fx.0.home">Home</span> vs <span class="editable" data-key="fx.0.away">Away</span></div>
+          <div class="small">
+            <span class="editable" data-key="fx.0.day">Day</span> ·
+            <span class="editable" data-key="fx.0.date">Date</span> ·
+            <span class="editable" data-key="fx.0.time">KO</span> ·
+            <span class="editable" data-key="fx.0.channel">Channel</span>
+          </div>
+        </div>
+        <div class="box">
+          <div><span class="editable" data-key="fx.1.home">Home</span> vs <span class="editable" data-key="fx.1.away">Away</span></div>
+          <div class="small">
+            <span class="editable" data-key="fx.1.day">Day</span> ·
+            <span class="editable" data-key="fx.1.date">Date</span> ·
+            <span class="editable" data-key="fx.1.time">KO</span> ·
+            <span class="editable" data-key="fx.1.channel">Channel</span>
+          </div>
+        </div>
+        <div class="box">
+          <div><span class="editable" data-key="fx.2.home">Home</span> vs <span class="editable" data-key="fx.2.away">Away</span></div>
+          <div class="small">
+            <span class="editable" data-key="fx.2.day">Day</span> ·
+            <span class="editable" data-key="fx.2.date">Date</span> ·
+            <span class="editable" data-key="fx.2.time">KO</span> ·
+            <span class="editable" data-key="fx.2.channel">Channel</span>
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- Gallery -->
     <section class="panel" id="gallery">
       <h2 class="plaque">Gallery</h2>
-      <p class="editable">Add photos from your phone’s library in edit mode.</p>
+      <div id="galleryGrid" class="grid grid-3"></div>
     </section>
 
+    <!-- Videos -->
     <section class="panel" id="videos">
       <h2 class="plaque">Videos</h2>
-      <p class="editable">Upload band videos directly from your iPhone library.</p>
+      <div id="videoGrid" class="grid grid-2"></div>
     </section>
 
+    <!-- Opening Times (7 separate days) -->
     <section class="panel" id="hours">
       <h2 class="plaque">Opening Times</h2>
-      <ul class="editable">
-        <li>Mon–Thu: 12:00–23:00</li>
-        <li>Fri–Sat: 12:00–00:00</li>
-        <li>Sun: 12:00–22:30</li>
+      <ul class="hours">
+        <li><span>Monday</span><span class="editable" data-key="hours.mon">12:00–23:00</span></li>
+        <li><span>Tuesday</span><span class="editable" data-key="hours.tue">12:00–23:00</span></li>
+        <li><span>Wednesday</span><span class="editable" data-key="hours.wed">12:00–23:00</span></li>
+        <li><span>Thursday</span><span class="editable" data-key="hours.thu">12:00–23:00</span></li>
+        <li><span>Friday</span><span class="editable" data-key="hours.fri">12:00–00:00</span></li>
+        <li><span>Saturday</span><span class="editable" data-key="hours.sat">12:00–00:00</span></li>
+        <li><span>Sunday</span><span class="editable" data-key="hours.sun">12:00–22:30</span></li>
       </ul>
     </section>
 
+    <!-- Contact -->
     <section class="panel" id="contact">
       <h2 class="plaque">Contact Us</h2>
-      <ul class="editable">
+      <ul class="editable" data-key="contact">
         <li>Phone: 01793 855625</li>
         <li>Address: 3–4 The High Street, Royal Wootton Bassett, SN4 7BS</li>
         <li>Facebook: (add link)</li>
@@ -107,6 +193,27 @@
   </main>
 
   <footer class="footer wood">© The Phoenix Bar</footer>
+
+  <!-- Editor toolbar (shown when you tap the footer 5×) -->
+  <div id="editorBar" class="editor hidden">
+    <button data-action="toggle">Toggle edit</button>
+    <label class="filebtn">Upload Poster 1<input type="file" accept="image/*" data-upload="live.0.poster"></label>
+    <label class="filebtn">Upload Poster 2<input type="file" accept="image/*" data-upload="live.1.poster"></label>
+    <label class="filebtn">Upload Poster 3<input type="file" accept="image/*" data-upload="live.2.poster"></label>
+    <label class="filebtn">Upload Poster 4<input type="file" accept="image/*" data-upload="live.3.poster"></label>
+    <label class="filebtn">Add Gallery Photos<input type="file" accept="image/*" multiple data-upload="gallery"></label>
+    <label class="filebtn">Add Videos<input type="file" accept="video/*" multiple data-upload="videos"></label>
+    <button data-action="backup">Backup</button>
+    <label class="filebtn">Restore<input type="file" accept="application/json" data-upload="restore"></label>
+  </div>
+
   <script src="app.js"></script>
 </body>
 </html>
+
+
+
+     
+        
+    
+        
