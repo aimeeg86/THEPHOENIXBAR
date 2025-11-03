@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Phoenix Bar</title>
-  <meta name="description" content="The Phoenix Bar — local pub with live music, sport and great beer.">
-  <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#6b4c2e">
-  <link rel="apple-touch-icon" href="Logo Phoenix.PNG">
-  <link rel="icon" href="Logo Phoenix.PNG">
-  <link rel="stylesheet" href="style.css?v=10">
+  <meta name="description" content="The Phoenix Bar — local pub with live music, sport, and great beer." />
 
+  <!-- App icons & theme -->
+  <link rel="apple-touch-icon" href="Logo Phoenix.PNG" />
+  <link rel="icon" href="Logo Phoenix.PNG" />
+  <meta name="theme-color" content="#6b4c2e" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css?v=11" />
 </head>
 
 <body>
   <!-- HEADER -->
-  <header class="header wood">
+  <header class="header">
     <h1 class="engraved">The Phoenix Bar</h1>
   </header>
 
@@ -27,12 +29,13 @@
 
   <!-- HERO -->
   <section class="hero">
-    <img src="Hero Phoenix.jpg" alt="The Phoenix Bar">
+    <img src="Hero Phoenix.jpg" alt="The Phoenix Bar" />
   </section>
 
   <!-- MAIN CONTENT -->
   <main>
 
+    <!-- ABOUT -->
     <section class="section" id="about">
       <h2>About Us</h2>
       <div class="editable" data-key="about">
@@ -40,14 +43,16 @@
       </div>
     </section>
 
+    <!-- DRINK DEALS -->
     <section class="section" id="deals">
       <h2>Drink Deals</h2>
-      <div class="editable" data-key="deal1" class="box">Monday Madness – £3 Pints</div>
-      <div class="editable" data-key="deal2" class="box">Two for One Cocktails</div>
-      <div class="editable" data-key="deal3" class="box">Happy Hour 5–7pm</div>
-      <div class="editable" data-key="deal4" class="box">Shots 4 for £10</div>
+      <div class="editable box" data-key="deal1">Monday Madness – £3 Pints</div>
+      <div class="editable box" data-key="deal2">Two for One Cocktails</div>
+      <div class="editable box" data-key="deal3">Happy Hour 5–7pm</div>
+      <div class="editable box" data-key="deal4">Shots 4 for £10</div>
     </section>
 
+    <!-- DRAUGHT BEER -->
     <section class="section" id="beer">
       <h2>Beer on Draught</h2>
       <ul class="editable" data-key="beerlist">
@@ -57,46 +62,68 @@
       </ul>
     </section>
 
+    <!-- WHAT'S ON -->
     <section class="section" id="whatson">
       <h2>What’s On</h2>
-      <div class="editable" data-key="monday"  class="box">Monday: Quiz Night</div>
-      <div class="editable" data-key="tuesday" class="box">Tuesday: Darts</div>
-      <div class="editable" data-key="wednesday" class="box">Wednesday: Pool</div>
-      <div class="editable" data-key="thursday" class="box">Thursday: Open Mic</div>
-      <div class="editable" data-key="friday" class="box">Friday: Karaoke</div>
-      <div class="editable" data-key="saturday" class="box">Saturday: Live Band</div>
-      <div class="editable" data-key="sunday" class="box">Sunday: Chillout</div>
+      <div class="editable box" data-key="monday">Monday: Quiz Night</div>
+      <div class="editable box" data-key="tuesday">Tuesday: Darts</div>
+      <div class="editable box" data-key="wednesday">Wednesday: Pool</div>
+      <div class="editable box" data-key="thursday">Thursday: Open Mic</div>
+      <div class="editable box" data-key="friday">Friday: Karaoke</div>
+      <div class="editable box" data-key="saturday">Saturday: Live Band</div>
+      <div class="editable box" data-key="sunday">Sunday: Chillout</div>
     </section>
 
+    <!-- LIVE MUSIC -->
     <section class="section" id="livemusic">
       <h2>Live Music</h2>
       <div id="liveMusicGrid" class="grid">
-        <div><img id="live0Poster" src="" alt=""><input type="file" data-upload="live.0.poster" hidden></div>
-        <div><img id="live1Poster" src="" alt=""><input type="file" data-upload="live.1.poster" hidden></div>
-        <div><img id="live2Poster" src="" alt=""><input type="file" data-upload="live.2.poster" hidden></div>
-        <div><img id="live3Poster" src="" alt=""><input type="file" data-upload="live.3.poster" hidden></div>
+        <div>
+          <img id="live0Poster" src="" alt="Poster 1" />
+          <input type="file" data-upload="live.0.poster" accept="image/*" />
+        </div>
+        <div>
+          <img id="live1Poster" src="" alt="Poster 2" />
+          <input type="file" data-upload="live.1.poster" accept="image/*" />
+        </div>
+        <div>
+          <img id="live2Poster" src="" alt="Poster 3" />
+          <input type="file" data-upload="live.2.poster" accept="image/*" />
+        </div>
+        <div>
+          <img id="live3Poster" src="" alt="Poster 4" />
+          <input type="file" data-upload="live.3.poster" accept="image/*" />
+        </div>
       </div>
     </section>
 
+    <!-- FOOTBALL FIXTURES -->
     <section class="section" id="fixtures">
       <h2>Football Fixtures</h2>
-      <div class="editable" data-key="match1" class="box">Chelsea vs Arsenal — Sat 12:30 — Sky Sports</div>
-      <div class="editable" data-key="match2" class="box">Man Utd vs Liverpool — Sun 16:30 — TNT</div>
-      <div class="editable" data-key="match3" class="box">Leeds vs Newcastle — Mon 20:00 — Amazon</div>
+      <div class="editable box" data-key="match1">Chelsea vs Arsenal — Sat 12:30 — Sky Sports</div>
+      <div class="editable box" data-key="match2">Man Utd vs Liverpool — Sun 16:30 — TNT</div>
+      <div class="editable box" data-key="match3">Leeds vs Newcastle — Mon 20:00 — Amazon</div>
     </section>
 
+    <!-- GALLERY -->
     <section class="section" id="gallery">
       <h2>Gallery</h2>
-      <label class="filebtn"><input type="file" accept="image/*" multiple data-upload="gallery">Add Photos</label>
+      <label class="filebtn">
+        <input type="file" accept="image/*" multiple data-upload="gallery" /> Add Photos
+      </label>
       <div id="galleryGrid"></div>
     </section>
 
+    <!-- VIDEOS -->
     <section class="section" id="videos">
       <h2>Videos</h2>
-      <label class="filebtn"><input type="file" accept="video/*" multiple data-upload="videos">Add Videos</label>
+      <label class="filebtn">
+        <input type="file" accept="video/*" multiple data-upload="videos" /> Add Videos
+      </label>
       <div id="videoGrid"></div>
     </section>
 
+    <!-- OPENING TIMES -->
     <section class="section" id="hours">
       <h2>Opening Times</h2>
       <ul class="editable" data-key="hours">
@@ -110,6 +137,7 @@
       </ul>
     </section>
 
+    <!-- CONTACT -->
     <section class="section" id="contact">
       <h2>Contact Us</h2>
       <ul class="editable" data-key="contact">
@@ -124,16 +152,19 @@
   <!-- FOOTER -->
   <footer class="footer">© The Phoenix Bar</footer>
 
-  <!-- HIDDEN EDITOR BAR -->
+  <!-- EDITOR BAR -->
   <div id="editorBar" class="hidden">
     <button data-action="toggle">Done</button>
     <button data-action="backup">Backup</button>
-    <label class="filebtn">Restore<input type="file" data-upload="restore" accept=".json"></label>
+    <label class="filebtn">Restore
+      <input type="file" data-upload="restore" accept=".json" />
+    </label>
   </div>
 
   <!-- SCRIPTS -->
   <script type="module" src="app.js"></script>
-  <script type="module" src="sync.js"></script>
 
+  <!-- ONE-TIME MIGRATION (run once, then delete this line) -->
+  <script type="module" src="migrate.js"></script>
 </body>
 </html>
