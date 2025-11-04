@@ -1,12 +1,10 @@
-// service-worker.js (v11) — hard refresh all assets
-const CACHE = 'phoenix-v11';
+// service-worker.js (v12) — cache with versioned core; refresh safely
+const CACHE = 'phoenix-v12';
 const CORE = [
   './',
-  './index.html?v=11',
-  './style.css?v=11',
+  './index.html',
+  './style.css?v=12',
   './app.js',
-  './sync.js',       // harmless if missing
-  './migrate.js',    // harmless if missing
   './manifest.webmanifest',
   './Logo Phoenix.PNG',
   './Oak light.jpg',
@@ -20,9 +18,7 @@ self.addEventListener('install', (e) => {
 
 self.addEventListener('activate', (e) => {
   e.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.map(k => (k !== CACHE ? caches.delete(k) : null)))
-    )
+    caches.keys().then(keys => Promise.all(keys.map(k => k !== CACHE ? caches.delete(k) : null)))
   );
 });
 
