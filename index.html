@@ -1,148 +1,129 @@
--- === Normalize content into the keys your page reads ===
--- (Safe to run multiple times)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Phoenix Bar</title>
+  <meta name="description" content="The Phoenix Bar — local pub with live music, sport, and great beer." />
 
-WITH data AS (
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#6b4c2e" />
+  <link rel="apple-touch-icon" href="Logo Phoenix.PNG" />
+  <link rel="icon" href="Logo Phoenix.PNG" />
 
-  -- About
-  SELECT 'about' AS key, (SELECT value FROM phoenix_content WHERE key='about') AS value
+  <link rel="stylesheet" href="style.css?v=13" />
+</head>
 
-  UNION ALL
-  -- Draught beer list (prefer 'beerlist', else copy from 'beer.list')
-  SELECT 'beerlist',
-         COALESCE(
-           (SELECT value FROM phoenix_content WHERE key='beerlist'),
-           (SELECT value FROM phoenix_content WHERE key='beer.list')
-         )
+<body>
+  <header class="header">
+    <h1 class="engraved">The Phoenix Bar</h1>
+  </header>
 
-  UNION ALL
-  -- Deals (prefer new keys; fallback to old ones)
-  SELECT 'deal1', COALESCE(
-           (SELECT value FROM phoenix_content WHERE key='deal1'),
-           (SELECT value FROM phoenix_content WHERE key='deals.0')
-         )
-  UNION ALL
-  SELECT 'deal2', (SELECT value FROM phoenix_content WHERE key='deal2')
-  UNION ALL
-  SELECT 'deal3', COALESCE(
-           (SELECT value FROM phoenix_content WHERE key='deal3'),
-           (SELECT value FROM phoenix_content WHERE key='deals.2')
-         )
-  UNION ALL
-  SELECT 'deal4', COALESCE(
-           (SELECT value FROM phoenix_content WHERE key='deal4'),
-           (SELECT value FROM phoenix_content WHERE key='deals.3')
-         )
+  <nav class="quickbar">
+    <a class="quick" href="tel:01793855625">Call</a>
+    <a class="quick" target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=3-4+The+High+Street,+Royal+Wootton+Bassett,+SN4+7BS">Directions</a>
+  </nav>
 
-  UNION ALL
-  -- What's On (copy whatson.* -> weekday keys)
-  SELECT 'monday',    COALESCE((SELECT value FROM phoenix_content WHERE key='monday'),    (SELECT value FROM phoenix_content WHERE key='whatson.mon'))
-  UNION ALL
-  SELECT 'tuesday',   COALESCE((SELECT value FROM phoenix_content WHERE key='tuesday'),   (SELECT value FROM phoenix_content WHERE key='whatson.tue'))
-  UNION ALL
-  SELECT 'wednesday', COALESCE((SELECT value FROM phoenix_content WHERE key='wednesday'), (SELECT value FROM phoenix_content WHERE key='whatson.wed'))
-  UNION ALL
-  SELECT 'thursday',  COALESCE((SELECT value FROM phoenix_content WHERE key='thursday'),  (SELECT value FROM phoenix_content WHERE key='whatson.thu'))
-  UNION ALL
-  SELECT 'friday',    COALESCE((SELECT value FROM phoenix_content WHERE key='friday'),    (SELECT value FROM phoenix_content WHERE key='whatson.fri'))
-  UNION ALL
-  SELECT 'saturday',  COALESCE((SELECT value FROM phoenix_content WHERE key='saturday'),  (SELECT value FROM phoenix_content WHERE key='whatson.sat'))
-  UNION ALL
-  SELECT 'sunday',    COALESCE((SELECT value FROM phoenix_content WHERE key='sunday'),    (SELECT value FROM phoenix_content WHERE key='whatson.sun'))
+  <section class="hero">
+    <img src="Hero Phoenix.jpg" alt="The Phoenix Bar" />
+  </section>
 
-  UNION ALL
-  -- Fixtures: build match1..3 from fx.* parts if matchN not already set
-  SELECT 'match1',
-         COALESCE(
-           (SELECT value FROM phoenix_content WHERE key='match1'),
-           (
-             SELECT
-               COALESCE((SELECT value FROM phoenix_content WHERE key='fx.0.home'),'Home')
-               || ' vs ' ||
-               COALESCE((SELECT value FROM phoenix_content WHERE key='fx.0.away'),'Away')
-               || ' — ' ||
-               COALESCE((SELECT value FROM phoenix_content WHERE key='fx.0.day'),'Day')
-               || ' ' ||
-               COALESCE((SELECT value FROM phoenix_content WHERE key='fx.0.date'),'Date')
-               || ' — ' ||
-               COALESCE((SELECT value FROM phoenix_content WHERE key='fx.0.time'),'KO')
-               || ' — ' ||
-               COALESCE((SELECT value FROM phoenix_content WHERE key='fx.0.channel'),'Channel')
-           )
-         )
-  UNION ALL
-  SELECT 'match2',
-         COALESCE(
-           (SELECT value FROM phoenix_content WHERE key='match2'),
-           (
-             SELECT
-               COALESCE((SELECT value FROM phoenix_content WHERE key='fx.1.home'),'Home')
-               || ' vs ' ||
-               COALESCE((SELECT value FROM phoenix_content WHERE key='fx.1.away'),'Away')
-               || ' — ' ||
-               COALESCE((SELECT value FROM phoenix_content WHERE key='fx.1.day'),'Day')
-               || ' ' ||
-               COALESCE((SELECT value FROM phoenix_content WHERE key='fx.1.date'),'Date')
-               || ' — ' ||
-               COALESCE((SELECT value FROM phoenix_content WHERE key='fx.1.time'),'KO')
-               || ' — ' ||
-               COALESCE((SELECT value FROM phoenix_content WHERE key='fx.1.channel'),'Channel')
-           )
-         )
-  UNION ALL
-  SELECT 'match3',
-         COALESCE(
-           (SELECT value FROM phoenix_content WHERE key='match3'),
-           (
-             SELECT
-               COALESCE((SELECT value FROM phoenix_content WHERE key='fx.2.home'),'Home')
-               || ' vs ' ||
-               COALESCE((SELECT value FROM phoenix_content WHERE key='fx.2.away'),'Away')
-               || ' — ' ||
-               COALESCE((SELECT value FROM phoenix_content WHERE key='fx.2.day'),'Day')
-               || ' ' ||
-               COALESCE((SELECT value FROM phoenix_content WHERE key='fx.2.date'),'Date')
-               || ' — ' ||
-               COALESCE((SELECT value FROM phoenix_content WHERE key='fx.2.time'),'KO')
-               || ' — ' ||
-               COALESCE((SELECT value FROM phoenix_content WHERE key='fx.2.channel'),'Channel')
-           )
-         )
+  <main>
+    <section class="section" id="about">
+      <h2>About Us</h2>
+      <div class="editable box" data-key="about">
+        Welcome to The Phoenix Bar — a friendly local with live music, sport on TV, and a fine selection of beers.
+      </div>
+    </section>
 
-  UNION ALL
-  -- Hours: keep your formatted list; if missing, build from hours.mon..sun
-  SELECT 'hours',
-         COALESCE(
-           (SELECT value FROM phoenix_content WHERE key='hours'),
-           (
-             SELECT
-               '<li>Monday: '    || COALESCE((SELECT value FROM phoenix_content WHERE key='hours.mon'),'') || '</li>' ||
-               '<li>Tuesday: '   || COALESCE((SELECT value FROM phoenix_content WHERE key='hours.tue'),'') || '</li>' ||
-               '<li>Wednesday: ' || COALESCE((SELECT value FROM phoenix_content WHERE key='hours.wed'),'') || '</li>' ||
-               '<li>Thursday: '  || COALESCE((SELECT value FROM phoenix_content WHERE key='hours.thu'),'') || '</li>' ||
-               '<li>Friday: '    || COALESCE((SELECT value FROM phoenix_content WHERE key='hours.fri'),'') || '</li>' ||
-               '<li>Saturday: '  || COALESCE((SELECT value FROM phoenix_content WHERE key='hours.sat'),'') || '</li>' ||
-               '<li>Sunday: '    || COALESCE((SELECT value FROM phoenix_content WHERE key='hours.sun'),'') || '</li>'
-           )
-         )
+    <section class="section" id="deals">
+      <h2>Drink Deals</h2>
+      <div class="editable box" data-key="deal1">Monday Madness – £3 Pints</div>
+      <div class="editable box" data-key="deal2">Two for One Cocktails</div>
+      <div class="editable box" data-key="deal3">Happy Hour 5–7pm</div>
+      <div class="editable box" data-key="deal4">Shots 4 for £10</div>
+    </section>
 
-  UNION ALL
-  -- Posters (already correct naming)
-  SELECT 'live.0.poster', (SELECT value FROM phoenix_content WHERE key='live.0.poster')
-  UNION ALL SELECT 'live.1.poster', (SELECT value FROM phoenix_content WHERE key='live.1.poster')
-  UNION ALL SELECT 'live.2.poster', (SELECT value FROM phoenix_content WHERE key='live.2.poster')
-  UNION ALL SELECT 'live.3.poster', (SELECT value FROM phoenix_content WHERE key='live.3.poster')
+    <section class="section" id="beer">
+      <h2>Beer on Draught</h2>
+      <ul class="editable box" data-key="beerlist">
+        <li>Best Bitter – 4.1%</li>
+        <li>IPA – 5.2%</li>
+        <li>Stout – 4.5%</li>
+      </ul>
+    </section>
 
-  UNION ALL
-  -- Gallery / Videos lists
-  SELECT 'gallery.list', (SELECT value FROM phoenix_content WHERE key='gallery.list')
-  UNION ALL
-  SELECT 'videos.list',  (SELECT value FROM phoenix_content WHERE key='videos.list')
+    <section class="section" id="whatson">
+      <h2>What’s On</h2>
+      <div class="editable box" data-key="monday">Monday: Quiz Night</div>
+      <div class="editable box" data-key="tuesday">Tuesday: Darts</div>
+      <div class="editable box" data-key="wednesday">Wednesday: Pool</div>
+      <div class="editable box" data-key="thursday">Thursday: Open Mic</div>
+      <div class="editable box" data-key="friday">Friday: Karaoke</div>
+      <div class="editable box" data-key="saturday">Saturday: Live Band</div>
+      <div class="editable box" data-key="sunday">Sunday: Chillout</div>
+    </section>
 
-  UNION ALL
-  -- Contact
-  SELECT 'contact', (SELECT value FROM phoenix_content WHERE key='contact')
-)
+    <section class="section" id="livemusic">
+      <h2>Live Music</h2>
+      <div class="grid">
+        <div><img id="live0Poster"><input type="file" accept="image/*" data-upload="live.0.poster"></div>
+        <div><img id="live1Poster"><input type="file" accept="image/*" data-upload="live.1.poster"></div>
+        <div><img id="live2Poster"><input type="file" accept="image/*" data-upload="live.2.poster"></div>
+        <div><img id="live3Poster"><input type="file" accept="image/*" data-upload="live.3.poster"></div>
+      </div>
+    </section>
 
-INSERT INTO phoenix_content (key, value)
-SELECT key, value FROM data WHERE value IS NOT NULL
-ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value;
+    <section class="section" id="fixtures">
+      <h2>Football Fixtures</h2>
+      <div class="editable box" data-key="match1">Chelsea vs Arsenal — Sat 12:30 — Sky Sports</div>
+      <div class="editable box" data-key="match2">Man Utd vs Liverpool — Sun 16:30 — TNT</div>
+      <div class="editable box" data-key="match3">Leeds vs Newcastle — Mon 20:00 — Amazon</div>
+    </section>
+
+    <section class="section" id="gallery">
+      <h2>Gallery</h2>
+      <label class="filebtn"><input type="file" accept="image/*" multiple data-upload="gallery">Add Photos</label>
+      <div id="galleryGrid" class="grid"></div>
+    </section>
+
+    <section class="section" id="videos">
+      <h2>Videos</h2>
+      <label class="filebtn"><input type="file" accept="video/*" multiple data-upload="videos">Add Videos</label>
+      <div id="videoGrid" class="grid"></div>
+    </section>
+
+    <section class="section" id="hours">
+      <h2>Opening Times</h2>
+      <ul class="editable box" data-key="hours">
+        <li>Monday: 12–23:00</li>
+        <li>Tuesday: 12–23:00</li>
+        <li>Wednesday: 12–23:00</li>
+        <li>Thursday: 12–23:00</li>
+        <li>Friday: 12–00:00</li>
+        <li>Saturday: 12–00:00</li>
+        <li>Sunday: 12–22:30</li>
+      </ul>
+    </section>
+
+    <section class="section" id="contact">
+      <h2>Contact Us</h2>
+      <ul class="editable box" data-key="contact">
+        <li>Phone: 01793 855625</li>
+        <li>Address: 3–4 The High Street, Royal Wootton Bassett, SN4 7BS</li>
+        <li>Facebook: <a href="https://m.facebook.com/ThePhoenixBar2024/">https://m.facebook.com/ThePhoenixBar2024/</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">© The Phoenix Bar</footer>
+
+  <div id="editorBar" class="hidden">
+    <button data-action="toggle">Done</button>
+    <button data-action="backup">Backup</button>
+    <label class="filebtn">Restore<input type="file" accept=".json" data-upload="restore"></label>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
