@@ -104,21 +104,41 @@ function renderList(containerId, json, kind){
   const wrap = document.getElementById(containerId);
   if (!wrap) return;
   wrap.innerHTML = '';
+
   let arr = [];
   try { arr = JSON.parse(json || '[]'); } catch { arr = []; }
-  (arr || []).forEach(u => {
+
+  arr.forEach((u, i) => {
+    const item = document.createElement('div');
+    item.className = 'media-item';
+
     if (kind === 'img') {
       const img = document.createElement('img');
       img.src = u; img.style.width = '100%';
       img.style.border = '2px solid #b49361';
       img.style.borderRadius = '10px';
       img.style.objectFit = 'cover';
-      wrap.appendChild(img);
+      item.appendChild(img);
+
+      const del = document.createElement('button');
+      del.className = 'delbtn';
+      del.innerHTML = '🗑 Delete photo';
+      del.addEventListener('click', () => deleteMedia('img', 'gallery.list', i));
+      item.appendChild(del);
+
     } else {
       const v = document.createElement('video');
       v.src = u; v.controls = true; v.style.width = '100%';
-      wrap.appendChild(v);
+      item.appendChild(v);
+
+      const del = document.createElement('button');
+      del.className = 'delbtn';
+      del.innerHTML = '🗑 Delete video';
+      del.addEventListener('click', () => deleteMedia('video', 'videos.list', i));
+      item.appendChild(del);
     }
+
+    wrap.appendChild(item);
   });
 }
 
