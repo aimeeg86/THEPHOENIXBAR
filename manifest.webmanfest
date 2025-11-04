@@ -1,12 +1,10 @@
 {
   "name": "The Phoenix Bar",
   "short_name": "Phoenix Bar",
-  "description": "The Phoenix Bar — a friendly local with live music, sport on TV, and a fine selection of beers.",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#b5c1a1",
-  "theme_color": "#6b4c2e",
-  "orientation": "portrait",
+  "background_color": "#6b4b1f",
+  "theme_color": "#b49361",
   "icons": [
     {
       "src": "Logo Phoenix.PNG",
@@ -16,4 +14,3 @@
     }
   ]
 }
-
