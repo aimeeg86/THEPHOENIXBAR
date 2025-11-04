@@ -174,37 +174,55 @@ async function handleUpload(input){
 }
 
 // ---------- Edit mode UI (5 taps on footer) ----------
+// --- Edit mode: turn contentEditable on/off and show editor bar ---
+function setEditState(on) {
+  document.body.classList.toggle('edit-mode', !!on);
+  // Make all .editable fields actually editable
+  document.querySelectorAll('.editable').forEach(el => {
+    el.contentEditable = !!on;
+  });
+  const bar = document.getElementById('editorBar');
+  if (bar) bar.classList.toggle('hidden', !on);
+}
+
+// Footer 5x tap toggles edit mode
 (function initEditToggle(){
   const footer = document.querySelector('.footer');
   let taps = 0, timer;
   footer.addEventListener('click', ()=>{
     taps++; clearTimeout(timer);
     timer = setTimeout(()=>taps=0, 800);
-    if (taps >= 5){
-      document.body.classList.toggle('edit-mode');
-      $('#editorBar')?.classList.toggle('hidden', !document.body.classList.contains('edit-mode'));
-      alert(document.body.classList.contains('edit-mode') ? 'Edit mode ON' : 'Edit mode OFF');
+    if (taps >= 5) {
+      const nowOn = !document.body.classList.contains('edit-mode');
+      setEditState(nowOn);
+      alert(nowOn ? 'Edit mode ON' : 'Edit mode OFF');
       taps = 0;
     }
   });
 })();
 
-// Editor bar controls
+// Editor bar buttons
 document.addEventListener('DOMContentLoaded', ()=>{
-  $('#editorBar [data-action="toggle"]')?.addEventListener('click', ()=>{
-    document.body.classList.toggle('edit-mode');
-    $('#editorBar')?.classList.toggle('hidden', !document.body.classList.contains('edit-mode'));
+  // Ensure we start in view-only mode
+  setEditState(false);
+
+  document.querySelector('#editorBar [data-action="toggle"]')?.addEventListener('click', ()=>{
+    const nowOn = !document.body.classList.contains('edit-mode');
+    setEditState(nowOn);
   });
-  $('#editorBar [data-action="backup"]')?.addEventListener('click', ()=>{
+
+  document.querySelector('#editorBar [data-action="backup"]')?.addEventListener('click', ()=>{
     const blob = new Blob([JSON.stringify(loadLocal(), null, 2)], {type:'application/json'});
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a'); a.href=url; a.download='phoenix-backup.json'; a.click();
     setTimeout(()=>URL.revokeObjectURL(url),1500);
   });
-  $$('#editorBar input[type="file"], [data-upload]').forEach(inp=>{
+
+  document.querySelectorAll('#editorBar input[type="file"], [data-upload]').forEach(inp=>{
     inp.addEventListener('change', ()=>handleUpload(inp));
   });
 });
+
 
 // ---------- Init: load local first, then Supabase ----------
 document.addEventListener('DOMContentLoaded', async ()=>{
