@@ -27,20 +27,53 @@ function replaceLocal(map){
 
 // ---------- apply content to DOM ----------
 function applyToDOM(map){
+  const labelFor = {
+    'hours.mon': 'Monday',
+    'hours.tue': 'Tuesday',
+    'hours.wed': 'Wednesday',
+    'hours.thu': 'Thursday',
+    'hours.fri': 'Friday',
+    'hours.sat': 'Saturday',
+    'hours.sun': 'Sunday'
+  };
+
   $$('.editable').forEach(el=>{
     const k = el.dataset.key || el.id || el.dataset.editKey;
-    if (k && map[k] != null) el.innerHTML = map[k];
+    if (!k) return;
+
+    // IMPORTANT: don't wipe defaults if we have no value from Supabase
+    if (map[k] == null) return;
+
+    let val = String(map[k]).trim();
+
+    // For hours.*, ensure the day label is present
+    if (k.startsWith('hours.')) {
+      const day = labelFor[k] || '';
+      const hasLabel = /^[A-Za-z]+:\s*/i.test(val);  // already has "Monday:" etc.
+      if (!hasLabel && day) {
+        val = `${day}: ${val}`;
+      }
+    }
+
+    el.innerHTML = val;
   });
+
   // posters
-  for (let i=0;i<4;i++){
+  for (let i = 0; i < 4; i++) {
     const url = map[`live.${i}.poster`];
-    if (url) { const img = $(`#live${i}Poster`); if (img) img.src = url; }
+    if (url) {
+      const img = document.getElementById(`live${i}Poster`);
+      if (img) img.src = url;
+    }
   }
+
   // gallery
   renderList('galleryGrid', map['gallery.list'], 'img');
+
   // videos
   renderList('videoGrid', map['videos.list'], 'video');
 }
+
 function renderList(containerId, json, kind){
   const wrap = document.getElementById(containerId);
   if (!wrap) return;
