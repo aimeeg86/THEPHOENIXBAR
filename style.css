@@ -122,3 +122,35 @@ body:not(.edit-mode) [data-upload]{ display:none !important; }
 @media (min-width: 768px) {
   #livemusic .grid { grid-template-columns: repeat(4, 1fr); }
 }
+/* Live Music poster sizing + captions */
+#livemusic .poster-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+@media (min-width: 768px){ #livemusic .poster-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.poster-card { display: flex; flex-direction: column; gap: 0.4rem; }
+
+#livemusic img.poster {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border: 2px solid #b49361;
+  border-radius: 10px;
+  display: block;
+}
+
+#livemusic input[type="file"] {
+  font-size: 0.9rem;
+}
+
+.gig-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 8px;
+}
+
+.gig-line {
+  background: #fffdf6;
+  border: 1px solid #b49361;
+  border-radius: 8px;
+  padding: 4px 6px;
+  line-height: 1.2;
+}
