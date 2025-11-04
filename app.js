@@ -7,6 +7,41 @@
 // - Edit Mode (footer 5× tap) + triple guard on uploads
 // - Hours labels auto-added if missing
 // - Mobile-friendly and offline-safe (service worker registered here)
+// Turn a public URL back into a storage path inside the bucket
+function pathFromPublicURL(url) {
+  const prefix = `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/`;
+  if (!url || !url.startsWith(prefix)) return null;
+  // decode because names may include spaces etc.
+  return decodeURIComponent(url.slice(prefix.length));
+}
+
+async function deleteMedia(kind, urlKey, index) {
+  // urlKey is 'videos.list' or 'gallery.list'
+  // Load current list
+  const cur = JSON.parse(loadLocal()[urlKey] || '[]');
+  const url = cur[index];
+  if (!url) return;
+
+  // Remove from Supabase Storage (best-effort)
+  const path = pathFromPublicURL(url);
+  if (path) {
+    const { error } = await supabase.storage.from(BUCKET).remove([path]);
+    if (error) console.warn('Storage delete error:', error.message);
+  }
+
+  // Remove from list and persist
+  cur.splice(index, 1);
+  const map = { [urlKey]: JSON.stringify(cur) };
+  saveLocal(map);
+  await upsertMap(map);
+
+  // Re-render list
+  if (kind === 'video') {
+    renderList('videoGrid', map['videos.list'], 'video');
+  } else {
+    renderList('galleryGrid', map['gallery.list'], 'img');
+  }
+}
 
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
