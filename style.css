@@ -103,3 +103,22 @@ body:not(.edit-mode) [data-upload]{ display:none !important; }
   .quickbar{ flex-wrap:wrap; }
   .grid{ grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); }
 }
+/* Smaller, consistent poster tiles */
+#livemusic .grid { grid-template-columns: repeat(2, 1fr); }
+#livemusic img.poster {
+  width: 100%;
+  aspect-ratio: 3 / 4;         /* tall poster shape */
+  object-fit: cover;
+  border: 2px solid #b49361;
+  border-radius: 10px;
+  display: block;
+}
+#livemusic input[type="file"] {
+  margin-top: 6px;
+  font-size: 0.9rem;
+}
+
+/* More columns on larger screens */
+@media (min-width: 768px) {
+  #livemusic .grid { grid-template-columns: repeat(4, 1fr); }
+}
