@@ -220,3 +220,10 @@ body:not(.edit-mode) [data-upload] { display: none !important; }
   .quickbar { flex-wrap: wrap; }
   .grid { grid-template-columns: repeat(auto-fill, minmax(130px,1fr)); }
 }
+
+/* --- Uploads visible ONLY in edit mode --- */
+[data-upload] { display: none !important; pointer-events: none; }
+.filebtn { display: none !important; pointer-events: none; }
+
+body.edit-mode [data-upload] { display: inline-block !important; pointer-events: auto; }
+body.edit-mode .filebtn { display: inline-flex !important; pointer-events: auto; }
