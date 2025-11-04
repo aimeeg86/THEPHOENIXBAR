@@ -227,3 +227,20 @@ body:not(.edit-mode) [data-upload] { display: none !important; }
 
 body.edit-mode [data-upload] { display: inline-block !important; pointer-events: auto; }
 body.edit-mode .filebtn { display: inline-flex !important; pointer-events: auto; }
+
+/* Delete buttons for media (visible only in Edit Mode) */
+.delbtn {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  padding: 4px 8px;
+  border: 2px solid #7a5a2b;
+  border-radius: 8px;
+  background: #f8d7da;
+  color: #3a1b1b;
+  cursor: pointer;
+}
+.delbtn:hover { background: #f3c1c6; }
+.media-item { position: relative; display: flex; flex-direction: column; gap: 6px; }
+body.edit-mode .delbtn { display: inline-flex; }
