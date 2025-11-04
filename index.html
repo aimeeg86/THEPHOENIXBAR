@@ -6,29 +6,37 @@
   <title>The Phoenix Bar</title>
   <meta name="description" content="The Phoenix Bar — local pub with live music, sport, and great beer." />
 
+  <!-- PWA / icons -->
   <link rel="manifest" href="manifest.webmanifest" />
   <meta name="theme-color" content="#6b4c2e" />
   <link rel="apple-touch-icon" href="Logo Phoenix.PNG" />
   <link rel="icon" href="Logo Phoenix.PNG" />
 
-  <link rel="stylesheet" href="style.css?v=13" />
+  <!-- Styles (v16 cache-bust) -->
+  <link rel="stylesheet" href="style.css?v=16" />
 </head>
 
 <body>
+  <!-- HEADER -->
   <header class="header">
     <h1 class="engraved">The Phoenix Bar</h1>
   </header>
 
+  <!-- QUICK ACTION BAR -->
   <nav class="quickbar">
     <a class="quick" href="tel:01793855625">Call</a>
     <a class="quick" target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=3-4+The+High+Street,+Royal+Wootton+Bassett,+SN4+7BS">Directions</a>
   </nav>
 
+  <!-- HERO -->
   <section class="hero">
     <img src="Hero Phoenix.jpg" alt="The Phoenix Bar" />
   </section>
 
+  <!-- MAIN CONTENT -->
   <main>
+
+    <!-- ABOUT -->
     <section class="section" id="about">
       <h2>About Us</h2>
       <div class="editable box" data-key="about">
@@ -36,6 +44,7 @@
       </div>
     </section>
 
+    <!-- DRINK DEALS -->
     <section class="section" id="deals">
       <h2>Drink Deals</h2>
       <div class="editable box" data-key="deal1">Monday Madness – £3 Pints</div>
@@ -44,15 +53,17 @@
       <div class="editable box" data-key="deal4">Shots 4 for £10</div>
     </section>
 
+    <!-- ON DRAUGHT -->
     <section class="section" id="beer">
-  <h2>On Draught</h2>
-  <ul class="editable box" data-key="beerlist">
-    <li>Best Bitter – 4.1%</li>
-    <li>IPA – 5.2%</li>
-    <li>Stout – 4.5%</li>
-  </ul>
-</section>
+      <h2>On Draught</h2>
+      <ul class="editable box" data-key="beerlist">
+        <li>Best Bitter – 4.1%</li>
+        <li>IPA – 5.2%</li>
+        <li>Stout – 4.5%</li>
+      </ul>
+    </section>
 
+    <!-- WHAT'S ON -->
     <section class="section" id="whatson">
       <h2>What’s On</h2>
       <div class="editable box" data-key="monday">Monday: Quiz Night</div>
@@ -64,56 +75,58 @@
       <div class="editable box" data-key="sunday">Sunday: Chillout</div>
     </section>
 
+    <!-- LIVE MUSIC (4 posters with editable captions) -->
     <section class="section" id="livemusic">
-  <h2>Live Music</h2>
-  <div class="grid poster-grid">
-    <!-- Poster 1 -->
-    <div class="poster-card">
-      <img id="live0Poster" class="poster" alt="Poster 1">
-      <input type="file" accept="image/*" data-upload="live.0.poster">
-      <div class="gig-meta">
-        <div class="editable gig-line" data-key="live.0.act">Band/Act</div>
-        <div class="editable gig-line" data-key="live.0.day">Day</div>
-        <div class="editable gig-line" data-key="live.0.date">Date</div>
-        <div class="editable gig-line" data-key="live.0.time">Time</div>
+      <h2>Live Music</h2>
+      <div class="grid poster-grid">
+        <!-- Poster 1 -->
+        <div class="poster-card">
+          <img id="live0Poster" class="poster" alt="Poster 1">
+          <input type="file" accept="image/*" data-upload="live.0.poster">
+          <div class="gig-meta">
+            <div class="editable gig-line" data-key="live.0.act">Band/Act</div>
+            <div class="editable gig-line" data-key="live.0.day">Day</div>
+            <div class="editable gig-line" data-key="live.0.date">Date</div>
+            <div class="editable gig-line" data-key="live.0.time">Time</div>
+          </div>
+        </div>
+        <!-- Poster 2 -->
+        <div class="poster-card">
+          <img id="live1Poster" class="poster" alt="Poster 2">
+          <input type="file" accept="image/*" data-upload="live.1.poster">
+          <div class="gig-meta">
+            <div class="editable gig-line" data-key="live.1.act">Band/Act</div>
+            <div class="editable gig-line" data-key="live.1.day">Day</div>
+            <div class="editable gig-line" data-key="live.1.date">Date</div>
+            <div class="editable gig-line" data-key="live.1.time">Time</div>
+          </div>
+        </div>
+        <!-- Poster 3 -->
+        <div class="poster-card">
+          <img id="live2Poster" class="poster" alt="Poster 3">
+          <input type="file" accept="image/*" data-upload="live.2.poster">
+          <div class="gig-meta">
+            <div class="editable gig-line" data-key="live.2.act">Band/Act</div>
+            <div class="editable gig-line" data-key="live.2.day">Day</div>
+            <div class="editable gig-line" data-key="live.2.date">Date</div>
+            <div class="editable gig-line" data-key="live.2.time">Time</div>
+          </div>
+        </div>
+        <!-- Poster 4 -->
+        <div class="poster-card">
+          <img id="live3Poster" class="poster" alt="Poster 4">
+          <input type="file" accept="image/*" data-upload="live.3.poster">
+          <div class="gig-meta">
+            <div class="editable gig-line" data-key="live.3.act">Band/Act</div>
+            <div class="editable gig-line" data-key="live.3.day">Day</div>
+            <div class="editable gig-line" data-key="live.3.date">Date</div>
+            <div class="editable gig-line" data-key="live.3.time">Time</div>
+          </div>
+        </div>
       </div>
-    </div>
-    <!-- Poster 2 -->
-    <div class="poster-card">
-      <img id="live1Poster" class="poster" alt="Poster 2">
-      <input type="file" accept="image/*" data-upload="live.1.poster">
-      <div class="gig-meta">
-        <div class="editable gig-line" data-key="live.1.act">Band/Act</div>
-        <div class="editable gig-line" data-key="live.1.day">Day</div>
-        <div class="editable gig-line" data-key="live.1.date">Date</div>
-        <div class="editable gig-line" data-key="live.1.time">Time</div>
-      </div>
-    </div>
-    <!-- Poster 3 -->
-    <div class="poster-card">
-      <img id="live2Poster" class="poster" alt="Poster 3">
-      <input type="file" accept="image/*" data-upload="live.2.poster">
-      <div class="gig-meta">
-        <div class="editable gig-line" data-key="live.2.act">Band/Act</div>
-        <div class="editable gig-line" data-key="live.2.day">Day</div>
-        <div class="editable gig-line" data-key="live.2.date">Date</div>
-        <div class="editable gig-line" data-key="live.2.time">Time</div>
-      </div>
-    </div>
-    <!-- Poster 4 -->
-    <div class="poster-card">
-      <img id="live3Poster" class="poster" alt="Poster 4">
-      <input type="file" accept="image/*" data-upload="live.3.poster">
-      <div class="gig-meta">
-        <div class="editable gig-line" data-key="live.3.act">Band/Act</div>
-        <div class="editable gig-line" data-key="live.3.day">Day</div>
-        <div class="editable gig-line" data-key="live.3.date">Date</div>
-        <div class="editable gig-line" data-key="live.3.time">Time</div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
+    <!-- FOOTBALL FIXTURES -->
     <section class="section" id="fixtures">
       <h2>Football Fixtures</h2>
       <div class="editable box" data-key="match1">Chelsea vs Arsenal — Sat 12:30 — Sky Sports</div>
@@ -121,33 +134,39 @@
       <div class="editable box" data-key="match3">Leeds vs Newcastle — Mon 20:00 — Amazon</div>
     </section>
 
+    <!-- GALLERY -->
     <section class="section" id="gallery">
       <h2>Gallery</h2>
-      <label class="filebtn"><input type="file" accept="image/*" multiple data-upload="gallery">Add Photos</label>
+      <label class="filebtn">
+        <input type="file" accept="image/*" multiple data-upload="gallery" /> Add Photos
+      </label>
       <div id="galleryGrid" class="grid"></div>
     </section>
 
+    <!-- VIDEOS -->
     <section class="section" id="videos">
       <h2>Videos</h2>
-      <label class="filebtn"><input type="file" accept="video/*" multiple data-upload="videos">Add Videos</label>
+      <label class="filebtn">
+        <input type="file" accept="video/*" multiple data-upload="videos" /> Add Videos
+      </label>
       <div id="videoGrid" class="grid"></div>
     </section>
 
+    <!-- OPENING TIMES (7 separate keys: hours.mon..sun) -->
     <section class="section" id="hours">
-  <h2>Opening Times</h2>
-  <div class="grid hours-grid">
-    <div class="editable box" data-key="hours.mon">Monday: 12–23:00</div>
-    <div class="editable box" data-key="hours.tue">Tuesday: 12–23:00</div>
-    <div class="editable box" data-key="hours.wed">Wednesday: 12–23:00</div>
-    <div class="editable box" data-key="hours.thu">Thursday: 12–23:00</div>
-    <div class="editable box" data-key="hours.fri">Friday: 12–00:00</div>
-    <div class="editable box" data-key="hours.sat">Saturday: 12–00:00</div>
-    <div class="editable box" data-key="hours.sun">Sunday: 12–22:30</div>
-  </div>
-</section>
+      <h2>Opening Times</h2>
+      <div class="grid hours-grid">
+        <div class="editable box" data-key="hours.mon">Monday: 12–23:00</div>
+        <div class="editable box" data-key="hours.tue">Tuesday: 12–23:00</div>
+        <div class="editable box" data-key="hours.wed">Wednesday: 12–23:00</div>
+        <div class="editable box" data-key="hours.thu">Thursday: 12–23:00</div>
+        <div class="editable box" data-key="hours.fri">Friday: 12–00:00</div>
+        <div class="editable box" data-key="hours.sat">Saturday: 12–00:00</div>
+        <div class="editable box" data-key="hours.sun">Sunday: 12–22:30</div>
+      </div>
+    </section>
 
-
-
+    <!-- CONTACT -->
     <section class="section" id="contact">
       <h2>Contact Us</h2>
       <ul class="editable box" data-key="contact">
@@ -156,16 +175,22 @@
         <li>Facebook: <a href="https://m.facebook.com/ThePhoenixBar2024/">https://m.facebook.com/ThePhoenixBar2024/</a></li>
       </ul>
     </section>
+
   </main>
 
+  <!-- FOOTER -->
   <footer class="footer">© The Phoenix Bar</footer>
 
+  <!-- EDITOR BAR (appears in Edit Mode) -->
   <div id="editorBar" class="hidden">
     <button data-action="toggle">Done</button>
     <button data-action="backup">Backup</button>
-    <label class="filebtn">Restore<input type="file" accept=".json" data-upload="restore"></label>
+    <label class="filebtn">Restore
+      <input type="file" accept=".json" data-upload="restore" />
+    </label>
   </div>
 
+  <!-- SCRIPTS -->
   <script type="module" src="app.js"></script>
 </body>
 </html>
